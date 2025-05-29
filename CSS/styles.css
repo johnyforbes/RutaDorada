@@ -1,0 +1,73 @@
+/* styles.css */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+
+.login-container {
+  background: url('../img/fondoLogIn.jpg') no-repeat center center/cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  width: 80%;
+  max-width: 350px;
+}
+
+.logo {
+  width: 120px;
+  margin-bottom: 20px;
+}
+
+form input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sign-in, .register {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.sign-in {
+  background-color: #eee;
+}
+
+.register {
+  background-color: #f0ad00;
+  color: white;
+}
+
+.forgot {
+  display: block;
+  margin-top: 15px;
+  color: #333;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.forgot:hover {
+  text-decoration: underline;
+}

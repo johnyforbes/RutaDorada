@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ruta Dorada - Login</title>
+  <link rel="stylesheet" href="../CSS/styles.css" />
+</head>
+<body>
+  <div class="login-container">
+    <div class="overlay">
+      <img src="../img/logo-2.jpeg" alt="Ruta Dorada Logo" class="logo" />
+      <form id="loginForm">
+        <input type="text" placeholder="Usuario" id="username" required />
+        <input type="password" placeholder="contraseña/Password" id="password" required />
+        <div class="buttons">
+          <button type="submit" class="sign-in">Sign in</button>
+          <button type="button" class="register" onclick="register()">Register</button>
+        </div>
+        <a href="#" class="forgot">¿olvidaste la contraseña?</a>
+      </form>
+    </div>
+  </div>
+  <script src="../JS/script.js"></script>
+</body>
+</html>
