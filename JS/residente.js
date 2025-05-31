@@ -58,3 +58,8 @@ document.querySelectorAll('.route-card').forEach(card => {
     });
   }
 });
+
+// Botón volver: redirige al login
+document.querySelector('.back-btn').addEventListener('click', function() {
+  window.location.href = '../HTML/index.html';
+});
