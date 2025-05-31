@@ -1,0 +1,118 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: url('/img/fondoLogIn.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #333;
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 25px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.ruta {
+    color: yellow;
+}
+
+.dorada {
+    color: white;
+}
+
+.formulario {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 380px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+}
+
+.formulario input,
+.formulario select {
+    margin: 10px 0;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 1em;
+}
+
+.formulario .iti {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.formulario button {
+    margin-top: 15px;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.residente {
+    background-color: #e0e0e0;
+    color: #444;
+}
+
+.residente:hover {
+    background-color: #d0d0d0;
+    transform: translateY(-2px);
+}
+
+.turista {
+    background-color: #ffd700;
+    color: #555;
+}
+
+.turista:hover {
+    background-color: #e6c200;
+    transform: translateY(-2px);
+}
+
+.select2-container--default .select2-selection--single {
+    height: 44px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 44px;
+    padding-left: 12px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 42px;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.85em;
+    margin-top: -5px;
+    margin-bottom: 5px;
+    text-align: left;
+}
