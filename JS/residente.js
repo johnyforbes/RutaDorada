@@ -63,3 +63,24 @@ document.querySelectorAll('.route-card').forEach(card => {
 document.querySelector('.back-btn').addEventListener('click', function() {
   window.location.href = '../HTML/index.html';
 });
+
+// Detener propagación en rating y fav
+document.querySelectorAll('.rating span').forEach(star => {
+  star.addEventListener('click', function(e) {
+    e.stopPropagation(); // Evita que el click llegue al contenedor
+    const ratingDiv = this.parentElement;
+    const stars = ratingDiv.querySelectorAll('span');
+    const value = parseInt(this.getAttribute('data-value'));
+    stars.forEach((s, i) => {
+      s.textContent = i < value ? '★' : '☆';
+    });
+    ratingDiv.setAttribute('data-rating', value);
+  });
+});
+
+document.querySelectorAll('.fav').forEach(button => {
+  button.addEventListener('click', function(e) {
+    e.stopPropagation(); // Evita que el click llegue al contenedor
+    this.textContent = this.textContent === '♡' ? '♥' : '♡';
+  });
+});
