@@ -1,0 +1,435 @@
+/* --- Estilos Generales y Resets --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%; /* 1rem = 10px para facilitar los cálculos */
+}
+
+body {
+    font-family: 'Segoe UI', 'Open Sans', sans-serif; /* Prioriza Segoe UI, si no, usa Open Sans */
+    /* Mantenemos tu degradado y la imagen de fondo */
+    background-color: hsla(244.85, 100%, 50%, 1); /* Color base del degradado */
+    background-image: 
+        radial-gradient(circle at 50% 0%, rgb(0, 48, 65) 49.16%, transparent 102.23%),
+        url('../img/fondoResidente.jpg'); /* Asegúrate de que la ruta sea correcta */
+    background-blend-mode: normal; /* Asegura el modo de mezcla si hay un degradado */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* La imagen de fondo se mantiene fija al hacer scroll */
+
+    color: #343a40; /* Gris oscuro para el texto principal de la app */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinea al inicio para que el contenido no se centre verticalmente con el footer */
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    position: relative;
+    overflow-x: hidden; /* Evita el scroll horizontal no deseado */
+}
+
+/* --- Contenedor Principal de la App --- */
+.app-container {
+    max-width: 43rem; /* Usamos rems para el max-width */
+    width: 100%;
+    margin: 2rem auto; /* Un poco de margen superior/inferior para separarlo del borde del viewport */
+    border: 0.1rem solid #ccc; /* Usamos rems */
+    background: white;
+    min-height: calc(100vh - 4rem); /* Ajusta para el margen */
+    display: flex;
+    flex-direction: column;
+    border-radius: 1.5rem; /* Bordes más pronunciados para el contenedor principal */
+    box-shadow: 0 1rem 3rem rgba(0,0,0,0.2); /* Sombra más notable */
+    overflow: hidden; /* Asegura que nada sobresalga de los bordes redondeados */
+}
+
+/* --- Header --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Centra verticalmente los elementos del header */
+    padding: 1.5rem; /* Aumenta el padding */
+    background-color: #f7f7f7; /* Un fondo ligeramente diferente para el header */
+    border-bottom: 0.1rem solid #eee;
+}
+
+.back-btn {
+    font-size: 2.2rem; /* Tamaño de fuente más grande para el icono */
+    background: none;
+    border: none;
+    transition: background 0.2s ease-in-out, transform 0.2s ease-in-out; /* Transiciones suaves */
+    border-radius: 50%;
+    width: 4.5rem; /* Usamos rems */
+    height: 4.5rem; /* Usamos rems */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #34495e; /* Color oscuro para el botón */
+}
+
+.back-btn:hover,
+.back-btn:focus {
+    background: #e0e0e0;
+    outline: none;
+    transform: scale(1.1); /* Efecto de crecimiento al pasar el ratón */
+}
+
+.profile-pic {
+    width: 4.5rem; /* Usamos rems */
+    height: 4.5rem; /* Usamos rems */
+    background: url('../img/man-148582_1280.png') center/cover no-repeat;
+    border-radius: 50%;
+    border: 0.2rem solid #0073e6; /* Borde azul alrededor de la foto de perfil */
+    box-shadow: 0 0 0.8rem rgba(0, 115, 230, 0.3); /* Sombra sutil */
+}
+
+/* --- Sección de Título y Toggle --- */
+.title-section {
+    background: linear-gradient(to right, #0054a6, #0073e6); /* Mantenemos tu degradado */
+    color: white;
+    padding: 2rem 1.5rem; /* Aumenta el padding */
+    text-align: center;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1); /* Sombra sutil en la parte inferior */
+}
+
+.title-section h1 {
+    font-size: 3.8rem; /* Título principal más grande */
+    margin-bottom: 0.8rem;
+    font-weight: 700; /* Más negrita */
+    letter-spacing: -0.1rem; /* Ajuste para el texto */
+    text-shadow: 0 0.2rem 0.4rem rgba(0,0,0,0.2); /* Sombra de texto suave */
+}
+
+.title-section p {
+    font-size: 1.5rem; /* Tamaño de texto para la descripción */
+    opacity: 0.9;
+    margin-bottom: 1.5rem;
+}
+
+.toggle-user {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem; /* Margen superior */
+    background-color: rgba(255, 255, 255, 0.2); /* Fondo semitransparente para el contenedor de botones */
+    border-radius: 2.5rem;
+    padding: 0.5rem;
+    gap: 1rem; /* Espacio entre los botones */
+}
+
+.toggle-user button {
+    padding: 1rem 2rem; /* Aumenta el padding de los botones */
+    border: none;
+    border-radius: 2.5rem; /* Más redondeados */
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo claro para inactivo */
+    color: #343a40; /* Texto oscuro */
+    font-size: 1.6rem; /* Tamaño de fuente */
+    font-weight: 500;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.1s ease;
+    flex: 1; /* Permite que los botones crezcan y ocupen el espacio disponible */
+    max-width: 15rem; /* Ancho máximo para cada botón */
+    box-shadow: 0 0.2rem 0.5rem rgba(0,0,0,0.1);
+}
+
+.toggle-user button:hover {
+    transform: translateY(-0.2rem); /* Pequeño efecto 3D */
+}
+
+.toggle-user .active {
+    background-color: #FFD700; /* Dorado activo */
+    color: #2c3e50; /* Texto azul oscuro para el botón activo */
+    font-weight: 700; /* Más negrita */
+    box-shadow: 0 0.3rem 0.8rem rgba(255, 215, 0, 0.4); /* Sombra dorada */
+}
+
+/* --- Secciones de Información y Rutas --- */
+.info-section {
+    padding: 2rem 1.5rem; /* Aumenta el padding */
+    border-bottom: 0.1rem solid #eee;
+}
+
+.info-section h2 {
+    font-size: 2.4rem; /* Título de sección más grande */
+    margin-bottom: 1.5rem;
+    color: #0073e6; /* Azul brillante para los títulos de sección */
+    border-bottom: 0.2rem solid #e0e0e0; /* Línea de separación sutil */
+    padding-bottom: 0.8rem;
+    font-weight: 600;
+}
+
+.info-section p {
+    font-size: 1.6rem; /* Tamaño de texto para descripción */
+    color: #555;
+    margin-bottom: 1.5rem;
+}
+
+/* Ocultar secciones dinámicamente con JS */
+.hidden {
+    display: none !important; /* !important para asegurar que sobrescriba otros estilos */
+}
+
+.route-list {
+    flex: 1; /* Permite que la lista de rutas ocupe el espacio restante */
+    overflow-y: auto; /* Permite scroll solo en esta sección si el contenido es largo */
+    padding: 1.5rem; /* Aumenta el padding */
+    -webkit-overflow-scrolling: touch; /* Suaviza el scroll en iOS */
+}
+
+.route-card {
+    background: white;
+    display: flex;
+    align-items: center;
+    border-radius: 1.5rem; /* Bordes más redondeados */
+    padding: 1.5rem; /* Aumenta el padding */
+    box-shadow: 0 0.2rem 0.8rem rgba(0,0,0,0.1); /* Sombra más suave */
+    margin-bottom: 2rem; /* Más espacio entre tarjetas */
+    position: relative;
+    border: 0.1rem solid #f0f0f0; /* Borde sutil por defecto */
+    transition: all 0.3s ease-in-out; /* Transición para todos los cambios */
+}
+
+.route-card:hover,
+.route-card:focus-within {
+    box-shadow: 0 0.6rem 2rem rgba(0, 115, 230, 0.25), 0 0.2rem 0.8rem rgba(0,0,0,0.15); /* Sombra más fuerte y azulada */
+    border: 0.2rem solid #0073e6; /* Borde azul más pronunciado */
+    background: #e6f7ff; /* Fondo ligeramente azulado al pasar el ratón */
+    transform: translateY(-0.3rem); /* Efecto de levantamiento */
+    cursor: pointer;
+}
+
+.route-card img {
+    width: 8rem; /* Tamaño de imagen más grande */
+    height: 8rem; /* Tamaño de imagen más grande */
+    border-radius: 1.2rem; /* Bordes redondeados para la imagen */
+    object-fit: cover;
+    margin-right: 1.5rem; /* Más espacio a la derecha */
+    box-shadow: 0 0.2rem 0.5rem rgba(0,0,0,0.15); /* Sombra en la imagen */
+}
+
+.route-details {
+    flex-grow: 1;
+    font-size: 1.5rem; /* Tamaño base del texto de detalles */
+}
+
+.route-details h3 {
+    font-size: 2rem; /* Título de la ruta más grande */
+    margin-bottom: 0.5rem;
+    color: #0054a6; /* Azul oscuro para los títulos de ruta */
+    font-weight: 600;
+}
+
+.route-details p {
+    font-size: 1.4rem; /* Texto de descripción más pequeño */
+    color: #6c757d; /* Gris más suave */
+    line-height: 1.4;
+    margin-bottom: 0.3rem; /* Espacio entre párrafos de detalles */
+}
+
+/* --- Rating (Estrellas) --- */
+.rating {
+    font-size: 1.6rem; /* Tamaño base del rating */
+    margin-left: 1rem;
+    white-space: nowrap; /* Evita que las estrellas se rompan en varias líneas */
+}
+
+.rating span {
+    cursor: pointer;
+    font-size: 2rem; /* Tamaño de las estrellas */
+    color: #FFD700; /* Dorado para estrellas activas (esto se establecerá con JS al inicializar) */
+    transition: color 0.2s ease;
+}
+
+/* --- Botón de Favoritos --- */
+.fav {
+    background: none;
+    border: none;
+    font-size: 2.5rem; /* Tamaño de corazón más grande */
+    color: #dc3545; /* Rojo para el corazón */
+    position: absolute;
+    right: 1.5rem; /* Más separado del borde derecho */
+    top: 1.5rem; /* Más separado del borde superior */
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.fav:hover {
+    color: #c82333; /* Rojo más oscuro al pasar el ratón */
+    transform: scale(1.1); /* Efecto de crecimiento */
+}
+
+.fav.favorited {
+    color: #ff0000; /* Rojo vibrante cuando es favorito (definido en JS) */
+    /* Puedes añadir un efecto de animación aquí si quieres */
+}
+
+
+/* --- Footer (Barra de Navegación Inferior) --- */
+footer {
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem; /* Padding uniforme */
+    border-top: 0.1rem solid #ddd;
+    background: #f7f7f7;
+    position: sticky; /* Sticky footer para que se quede abajo */
+    bottom: 0;
+    width: 100%;
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+    box-shadow: 0 -0.2rem 0.8rem rgba(0,0,0,0.1); /* Sombra superior sutil */
+}
+
+.tab {
+    border: none;
+    background: none;
+    font-size: 1.2rem; /* Tamaño de texto de tab */
+    cursor: pointer;
+    color: #555;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1; /* Permite que los tabs se distribuyan uniformemente */
+    padding: 0.5rem 0; /* Padding interno para el área del click */
+    transition: color 0.3s ease;
+}
+
+.tab-icon {
+    width: 2.8rem; /* Tamaño de icono más grande */
+    height: 2.8rem; /* Tamaño de icono más grande */
+    margin-bottom: 0.5rem; /* Más espacio debajo del icono */
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.tab:hover .tab-icon,
+.tab:focus .tab-icon {
+    transform: scale(1.1); /* Ligeramente más grande al pasar el ratón */
+    filter: brightness(1.1) drop-shadow(0 0.2rem 0.6rem #0073e655); /* Sombra y brillo sutil */
+}
+
+.tab.active {
+    color: #0073e6; /* Azul brillante para el tab activo */
+    font-weight: bold;
+}
+
+.tab.active .tab-icon {
+    transform: scale(1.15) translateY(-0.2rem); /* Efecto de levantamiento para el activo */
+    filter: brightness(1.2) drop-shadow(0 0.3rem 0.8rem #0073e666); /* Sombra más fuerte para el activo */
+}
+
+
+/* --- Media Queries para Responsividad --- */
+@media (max-width: 600px) {
+    body {
+        align-items: flex-start; /* Permite que el body se alinee al top en móviles */
+    }
+    .app-container {
+        max-width: 100vw;
+        border: none;
+        border-radius: 0;
+        min-height: 100vh;
+        margin: 0; /* Elimina el margen en pantallas muy pequeñas */
+        box-shadow: none; /* Elimina la sombra para un aspecto más nativo de app */
+    }
+
+    header {
+        padding: 1rem;
+    }
+
+    .title-section {
+        padding: 1.5rem 1rem;
+    }
+    .title-section h1 {
+        font-size: 3.2rem;
+    }
+    .title-section p {
+        font-size: 1.3rem;
+    }
+
+    .toggle-user button {
+        padding: 0.8rem 1.5rem;
+        font-size: 1.4rem;
+        max-width: unset; /* Permite que los botones ocupen el espacio disponible */
+    }
+
+    .info-section {
+        padding: 1.5rem 1rem;
+    }
+    .info-section h2 {
+        font-size: 2.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .route-list {
+        padding: 1rem;
+    }
+
+    .route-card {
+        flex-direction: column; /* Apila los elementos en tarjetas pequeñas */
+        align-items: flex-start;
+        padding: 1.2rem;
+        margin-bottom: 1.5rem;
+    }
+    .route-card img {
+        margin-bottom: 1rem;
+        margin-right: 0;
+        width: 100%; /* Imagen ocupa todo el ancho */
+        height: auto;
+        max-width: 100%;
+        border-radius: 1rem;
+    }
+    .route-details {
+        width: 100%;
+    }
+    .route-details h3 {
+        font-size: 1.8rem;
+    }
+    .route-details p {
+        font-size: 1.3rem;
+    }
+
+    .rating {
+        margin-top: 0.8rem;
+        margin-left: 0;
+        width: 100%; /* Ocupa todo el ancho */
+        text-align: center; /* Centra las estrellas */
+    }
+
+    .fav {
+        top: 1rem; /* Ajusta posición */
+        right: 1rem;
+        font-size: 2rem;
+    }
+
+    footer {
+        padding: 0.8rem;
+    }
+    .tab span {
+        font-size: 1.1rem;
+    }
+    .tab-icon {
+        width: 2.4rem;
+        height: 2.4rem;
+    }
+}
+
+/* Estilos para pantallas muy pequeñas (ej. iPhone SE) */
+@media (max-width: 380px) {
+    .title-section h1 {
+        font-size: 3rem;
+    }
+    .toggle-user button {
+        font-size: 1.3rem;
+        padding: 0.7rem 1rem;
+    }
+    .route-card img {
+        width: 90%; /* Ajuste para imágenes más pequeñas */
+        max-width: 25rem;
+        margin: 0 auto 1rem auto; /* Centrar imagen */
+    }
+    .rating span {
+        font-size: 1.8rem;
+    }
+}

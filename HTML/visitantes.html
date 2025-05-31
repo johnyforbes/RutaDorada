@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ruta Dorada - Visitante</title>
+    <link rel="stylesheet" href="../CSS/visitantes.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40j3npqqM/PXasL/bgAXeM7fR/fQ12w5+6K4w4f4sN6n6m/x7Z/Lz+d2L4W4z8E5jD8A5t5f8t6w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <div class="styled-wrapper">
+                <button class="back-btn button" aria-label="Volver">
+                    <span class="button-box">←</span>
+                </button>
+            </div>
+            <div class="profile-pic"></div>
+        </header>
+
+        <section class="title-section">
+            <h1>RutaDorada</h1>
+            <p>Descuento de 10% tarjeta de occre Raizal</p>
+
+            <div class="toggle-user">
+                <button id="residenteBtn" class="active">Residente</button>
+                <button id="visitanteBtn">Visitante</button>
+            </div>
+        </section>
+
+        <section class="info-section route-section" id="residenteRoutes">
+            <h2>Rutas de viaje (Residentes)</h2>
+            <p>Precio pasaje $3.500</p>
+            <div class="route-list">
+                <div class="route-card" data-route="centro">
+                    <img src="../img/centro.jpg" alt="Centro">
+                    <div class="route-details">
+                        <h3>Centro</h3>
+                        <p>Ruta centro 🚌 - a 10 minutos</p>
+                        <p>1.5 kilómetros de la parada</p>
+                    </div>
+                    <div class="rating" data-rating="5">
+                        <span data-value="1">★</span>
+                        <span data-value="2">★</span>
+                        <span data-value="3">★</span>
+                        <span data-value="4">★</span>
+                        <span data-value="5">★</span>
+                    </div>
+                    <button class="fav">♡</button>
+                </div>
+
+                <div class="route-card" data-route="sanluis">
+                    <img src="../img/sanluis.jpg" alt="San Luis">
+                    <div class="route-details">
+                        <h3>San Luis</h3>
+                        <p>Ruta centro 🚌 - a 5 minutos</p>
+                        <p>0.8 kilómetros de la parada</p>
+                    </div>
+                    <div class="rating" data-rating="4">
+                        <span data-value="1">★</span>
+                        <span data-value="2">★</span>
+                        <span data-value="3">★</span>
+                        <span data-value="4">★</span>
+                        <span data-value="5">★</span>
+                    </div>
+                    <button class="fav">♡</button>
+                </div>
+
+                <div class="route-card" data-route="loma">
+                    <img src="../img/loma.jpg" alt="Loma">
+                    <div class="route-details">
+                        <h3>Loma</h3>
+                        <p>Ruta al mirador ⛰️ - a 15 minutos</p>
+                        <p>2.0 kilómetros de la parada</p>
+                    </div>
+                    <div class="rating" data-rating="3">
+                        <span data-value="1">★</span>
+                        <span data-value="2">★</span>
+                        <span data-value="3">★</span>
+                        <span data-value="4">★</span>
+                        <span data-value="5">★</span>
+                    </div>
+                    <button class="fav">♡</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="info-section route-section hidden" id="visitanteRoutes">
+            <h2>Rutas de viaje (Visitantes)</h2>
+            <p>Precio pasaje $4.000</p> <div class="route-list">
+                <div class="route-card" data-route="punta-norte">
+                    <img src="../img/cove.jpg" alt="Cove"> <div class="route-details">
+                        <h3>Punta Norte</h3>
+                        <p>Ruta turística 🏝️ - a 20 minutos</p>
+                        <p>3.5 kilómetros de la parada</p>
+                    </div>
+                    <div class="rating" data-rating="5">
+                        <span data-value="1">★</span>
+                        <span data-value="2">★</span>
+                        <span data-value="3">★</span>
+                        <span data-value="4">★</span>
+                        <span data-value="5">★</span>
+                    </div>
+                    <button class="fav">♡</button>
+                </div>
+
+                <div class="route-card" data-route="bahia-sol">
+                    <img src="../img/sanluis.jpg" alt="San Luis"> <div class="route-details">
+                        <h3>Bahía del Sol</h3>
+                        <p>Ruta costera 🌊 - a 25 minutos</p>
+                        <p>4.2 kilómetros de la parada</p>
+                    </div>
+                    <div class="rating" data-rating="4">
+                        <span data-value="1">★</span>
+                        <span data-value="2">★</span>
+                        <span data-value="3">★</span>
+                        <span data-value="4">★</span>
+                        <span data-value="5">★</span>
+                    </div>
+                    <button class="fav">♡</button>
+                </div>
+
+                <div class="route-card" data-route="laguna-coral">
+                    <img src="../img/centro.jpg" alt="Laguna Coral">
+                    <div class="route-details">
+                        <h3>Laguna Coral</h3>
+                        <p>Ruta natural 🌿 - a 30 minutos</p>
+                        <p>5.0 kilómetros de la parada</p>
+                    </div>
+                    <div class="rating" data-rating="4">
+                        <span data-value="1">★</span>
+                        <span data-value="2">★</span>
+                        <span data-value="3">★</span>
+                        <span data-value="4">★</span>
+                        <span data-value="5">★</span>
+                    </div>
+                    <button class="fav">♡</button>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <button class="tab active" data-tab="rutas">
+                <img src="../img/bus_1995993.png" alt="Rutas" class="tab-icon">
+                <span>Rutas</span>
+            </button>
+            <button class="tab" data-tab="historial">
+                <img src="../img/planning_12178861.png" alt="Historial" class="tab-icon">
+                <span>Historial</span>
+            </button>
+            <button class="tab" data-tab="cuenta">
+                <img src="../img/user-account_18962978.png" alt="Cuenta" class="tab-icon">
+                <span>Cuenta</span>
+            </button>
+        </footer>
+    </div>
+
+    <script src="../JS/visitante.js"></script>
+</body>
+</html>
