@@ -6,12 +6,14 @@
 
 body {
   font-family: 'Segoe UI', sans-serif;
-   background-color: hsla(244.85294117647055, 100%, 50%, 1);
-    background-image: radial-gradient(circle at 50% 0%, rgb(0, 48, 65) 49.15975941515135%, transparent 102.23193813062571%);
-    background-blend-mode: normal;
-    
+  background-color: hsla(244.85, 100%, 50%, 1);
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgb(0, 48, 65) 49.16%, transparent 102.23%),
+    url('../img/fondoResidente.jpg'); /* Cambia el nombre por el de tu imagen */
+  background-blend-mode: normal;
+  background-size: cover;
+  background-position: center;
 }
-
 
 .app-container {
   max-width: 430px;
