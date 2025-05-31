@@ -51,11 +51,24 @@ tabs.forEach(tab => {
 
 document.querySelectorAll('.route-card').forEach(card => {
   const title = card.querySelector('h3');
-  if (title && title.textContent.trim().toLowerCase() === 'centro') {
-    card.addEventListener('click', () => {
-      // Redirige al mapa y pasa un parámetro para mostrar la ruta de Centro
-      window.location.href = '../HTML/viajes.html?route=centro';
-    });
+  if (title) {
+    const routeName = title.textContent.trim().toLowerCase();
+    // Normaliza el nombre para la URL
+    let routeParam = '';
+    if (routeName === 'centro') routeParam = 'centro';
+    else if (routeName === 'san luis') routeParam = 'sanluis';
+    else if (routeName === 'cove') routeParam = 'cove';
+    else if (routeName === 'loma') routeParam = 'loma';
+    if (routeParam) {
+      card.addEventListener('click', function(e) {
+        // Evita que el click en rating o fav active el mapa
+        if (
+          e.target.classList.contains('fav') ||
+          e.target.closest('.rating')
+        ) return;
+        window.location.href = `../HTML/viajes.html?route=${routeParam}`;
+      });
+    }
   }
 });
 

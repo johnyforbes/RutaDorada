@@ -25,33 +25,31 @@ const drawControl = new L.Control.Draw({
 });
 map.addControl(drawControl);
 
+// Obtén el nombre de la ruta desde la URL
+function getQueryParam(param) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(param);
+}
+const currentRoute = getQueryParam('route') || 'centro';
+
 // Captura coordenadas de la línea dibujada
 map.on('draw:created', function (e) {
   var layer = e.layer;
   map.addLayer(layer);
 
-  // Si es una polilínea o polígono, guarda las coordenadas
   if (e.layerType === 'polyline' || e.layerType === 'polygon') {
     var coords = layer.getLatLngs();
-    // Guarda en localStorage como string
-    localStorage.setItem('centroRouteCoords', JSON.stringify(coords));
+    // Guarda en localStorage con la clave de la ruta
+    localStorage.setItem(currentRoute + 'RouteCoords', JSON.stringify(coords));
   }
 });
 
-function getQueryParam(param) {
-  const urlParams = new URLSearchParams(window.location.search);
-  return urlParams.get(param);
-}
-
+// Mostrar la ruta guardada al cargar
 window.addEventListener('DOMContentLoaded', () => {
-  if (getQueryParam('route') === 'centro') {
-    const coordsStr = localStorage.getItem('centroRouteCoords');
-    if (coordsStr) {
-      const coords = JSON.parse(coordsStr);
-      // Dibuja la polilínea en el mapa
-      L.polyline(coords, {color: 'blue'}).addTo(map);
-      // Centra el mapa en la ruta
-      map.fitBounds(coords);
-    }
+  const coordsStr = localStorage.getItem(currentRoute + 'RouteCoords');
+  if (coordsStr) {
+    const coords = JSON.parse(coordsStr);
+    L.polyline(coords, {color: 'blue'}).addTo(map);
+    map.fitBounds(coords);
   }
 });
