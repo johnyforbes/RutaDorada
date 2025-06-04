@@ -15,6 +15,15 @@ toggleButtons.forEach(btn => {
   });
 });
 
+// Redirigir al apartado de visitantes al hacer clic en el botón "Visitante"
+document.querySelectorAll('.toggle-user button').forEach(btn => {
+  if (btn.textContent.trim().toLowerCase() === 'visitante') {
+    btn.addEventListener('click', function() {
+      window.location.href = '../HTML/visitante.html';
+    });
+  }
+});
+
 // Estrellas seleccionables
 document.querySelectorAll('.rating').forEach(ratingDiv => {
   const stars = ratingDiv.querySelectorAll('span');
@@ -91,9 +100,18 @@ document.querySelectorAll('.rating span').forEach(star => {
   });
 });
 
-document.querySelectorAll('.fav').forEach(button => {
-  button.addEventListener('click', function(e) {
-    e.stopPropagation(); // Evita que el click llegue al contenedor
-    this.textContent = this.textContent === '♡' ? '♥' : '♡';
-  });
-});
+ document.querySelectorAll('fav').forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.stopPropagation(); // Evita que el clic llegue al contenedor de la tarjeta
+            this.textContent = this.textContent === '♡' ? '♥' : '♡';
+            // Aquí puedes añadir lógica para guardar/eliminar de favoritos en un backend si lo tuvieras
+            if (this.textContent === '♥') {
+                console.log('Ruta añadida a favoritos');
+                // Puedes añadir una clase visual si quieres un efecto diferente
+                this.classList.add('favorited');
+            } else {
+                console.log('Ruta eliminada de favoritos');
+                this.classList.remove('favorited');
+            }
+        });
+    });

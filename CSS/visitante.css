@@ -1,6 +1,7 @@
 /*
- * Archivo: residente.css
- * Estilos principales de la aplicación para Residentes.
+ * Archivo: visitantes.css
+ * Adaptado de residente.css para la interfaz de Visitantes.
+ * Colores y algunos elementos visuales diferenciados.
 */
 
 * {
@@ -15,10 +16,10 @@ html {
 
 body {
     font-family: 'Segoe UI', 'Open Sans', sans-serif; /* Prioriza Segoe UI, si no, usa Open Sans */
-    background-color: hsla(244.85, 100%, 50%, 1); /* Color base del degradado */
+    background-color: hsla(190, 100%, 50%, 1); /* Nuevo color base del degradado para Visitantes (ej. un azul cian) */
     background-image:
-        radial-gradient(circle at 50% 0%, rgb(0, 48, 65) 49.16%, transparent 102.23%),
-        url('../img/fondoResidente.jpg'); /* Asegúrate de que la ruta sea correcta */
+        radial-gradient(circle at 50% 0%, rgb(0, 100, 130) 49.16%, transparent 102.23%), /* Nuevo degradado para Visitantes */
+        url('../img/fondoResidente.jpg'); /* Considera usar una imagen de fondo diferente para Visitantes si tienes una */
     background-blend-mode: normal;
     background-size: cover;
     background-position: center;
@@ -85,15 +86,15 @@ header {
 .profile-pic {
     width: 4.5rem;
     height: 4.5rem;
-    background: url('../img/man-148582_1280.png') center/cover no-repeat;
+    background: url('../img/man-148582_1280.png') center/cover no-repeat; /* Cambia a una imagen de visitante si tienes */
     border-radius: 50%;
-    border: 0.2rem solid #0073e6;
-    box-shadow: 0 0 0.8rem rgba(0, 115, 230, 0.3);
+    border: 0.2rem solid #00a6a6; /* Nuevo color de borde para visitantes (ej. un verde azulado) */
+    box-shadow: 0 0 0.8rem rgba(0, 166, 166, 0.3); /* Nueva sombra para visitantes */
 }
 
 /* --- Sección de Título y Toggle --- */
 .title-section {
-    background: linear-gradient(to right, #0054a6, #0073e6);
+    background: linear-gradient(to right, #008c8c, #00a6a6); /* Nuevo degradado para visitantes (tonos de cian/verde azulado) */
     color: white;
     padding: 2rem 1.5rem;
     text-align: center;
@@ -159,7 +160,7 @@ header {
 .info-section h2 {
     font-size: 2.4rem;
     margin-bottom: 1.5rem;
-    color: #0073e6;
+    color: #00a6a6; /* Nuevo color para títulos de sección (verde azulado) */
     border-bottom: 0.2rem solid #e0e0e0;
     padding-bottom: 0.8rem;
     font-weight: 600;
@@ -198,8 +199,8 @@ header {
 
 .route-card:hover,
 .route-card:focus-within {
-    box-shadow: 0 0.6rem 2rem rgba(0, 115, 230, 0.25), 0 0.2rem 0.8rem rgba(0,0,0,0.15);
-    border: 0.2rem solid #0073e6;
+    box-shadow: 0 0.6rem 2rem rgba(0, 166, 166, 0.25), 0 0.2rem 0.8rem rgba(0,0,0,0.15); /* Nueva sombra y borde para visitantes */
+    border: 0.2rem solid #00a6a6;
     background: #e6f7ff;
     transform: translateY(-0.3rem);
     cursor: pointer;
@@ -222,8 +223,8 @@ header {
 
 .route-details h3 {
     font-size: 2rem;
+    color: #008c8c; /* Nuevo color para títulos de ruta (cian oscuro) */
     margin-bottom: 0.5rem;
-    color: #0054a6;
     font-weight: 600;
 }
 
@@ -271,12 +272,12 @@ header {
 }
 
 
-/* --- Footer (Barra de Navegación Inferior) - Estilo del Segundo Código --- */
+/* --- Footer (Barra de Navegación Inferior) - ESTILO ORIGINAL DEL SEGUNDO CÓDIGO --- */
 footer {
     display: flex;
     justify-content: space-around;
-    padding: 10px; /* ORIGINAL: 10px */
-    border-top: 1px solid #ddd; /* ORIGINAL: 1px */
+    padding: 10px;
+    border-top: 1px solid #ddd;
     background: #f7f7f7;
     position: sticky;
     bottom: 0;
@@ -288,7 +289,7 @@ footer {
 .tab {
     border: none;
     background: none;
-    font-size: 12px; /* ORIGINAL: 12px */
+    font-size: 12px;
     cursor: pointer;
     color: #555;
     display: flex;
@@ -300,9 +301,9 @@ footer {
 }
 
 .tab-icon {
-    width: 24px; /* ORIGINAL: 24px */
-    height: 24px; /* ORIGINAL: 24px */
-    margin-bottom: 4px; /* ORIGINAL: 4px */
+    width: 24px;
+    height: 24px;
+    margin-bottom: 4px;
     transition: transform 0.3s, filter 0.3s;
 }
 

@@ -1,0 +1,330 @@
+html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ruta Dorada - Visitante</title>
+    <link rel="stylesheet" href="../CSS/visitantes.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40j3npqqM/PXasL/bgAXeM7fR/fQ12w5+6K4w4f4sN6n6m/x7Z/Lz+d2L4W4z8E5jD8A5t5f8t6w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <div class="styled-wrapper">
+                <button class="back-btn button" aria-label="Volver">
+                    <span class="button-box">←</span>
+                </button>
+            </div>
+            <div class="profile-pic"></div>
+        </header>
+
+        <section class="title-section">
+            <h1>RutaDorada</h1>
+            <p>Descuento de 10% tarjeta de occre Raizal</p>
+
+            <div class="toggle-user">
+                <button id="residenteBtn" class="active">Residente</button>
+                <button id="visitanteBtn">Visitante</button>
+            </div>
+        </section>
+
+        <section class="info-section route-section" id="residenteRoutes">
+            <h2>Rutas de viaje (Residentes)</h2>
+            <p>Precio pasaje $3.500</p>
+            <div class="route-list">
+                <div class="route-card" data-route="centro">
+                    <img src="../img/centro.jpg" alt="Centro">
+                    <div class="route-details">
+                        <h3>Centro</h3>
+                        <p>Ruta centro 🚌 - a 10 minutos</p>
+                        <p>1.5 kilómetros de la parada</p>
+                    </div>
+                    <div class="rating" data-rating="5">
+                        <span data-value="1">★</span>
+                        <span data-value="2">★</span>
+                        <span data-value="3">★</span>
+                        <span data-value="4">★</span>
+                        <span data-value="5">★</span>
+                    </div>
+                    <button class="fav">♡</button>
+                </div>
+
+                <div class="route-card" data-route="sanluis">
+                    <img src="../img/sanluis.jpg" alt="San Luis">
+                    <div class="route-details">
+                        <h3>San Luis</h3>
+                        <p>Ruta centro 🚌 - a 5 minutos</p>
+                        <p>0.8 kilómetros de la parada</p>
+                    </div>
+                    <div class="rating" data-rating="4">
+                        <span data-value="1">★</span>
+                        <span data-value="2">★</span>
+                        <span data-value="3">★</span>
+                        <span data-value="4">★</span>
+                        <span data-value="5">★</span>
+                    </div>
+                    <button class="fav">♡</button>
+                </div>
+
+                <div class="route-card" data-route="loma">
+                    <img src="../img/loma.jpg" alt="Loma">
+                    <div class="route-details">
+                        <h3>Loma</h3>
+                        <p>Ruta al mirador ⛰️ - a 15 minutos</p>
+                        <p>2.0 kilómetros de la parada</p>
+                    </div>
+                    <div class="rating" data-rating="3">
+                        <span data-value="1">★</span>
+                        <span data-value="2">★</span>
+                        <span data-value="3">★</span>
+                        <span data-value="4">★</span>
+                        <span data-value="5">★</span>
+                    </div>
+                    <button class="fav">♡</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="info-section route-section hidden" id="visitanteRoutes">
+            <h2>Rutas de viaje (Visitantes)</h2>
+            <p>Precio pasaje $4.000</p> <div class="route-list">
+                <div class="route-card" data-route="punta-norte">
+                    <img src="../img/cove.jpg" alt="Cove"> <div class="route-details">
+                        <h3>Punta Norte</h3>
+                        <p>Ruta turística 🏝️ - a 20 minutos</p>
+                        <p>3.5 kilómetros de la parada</p>
+                    </div>
+                    <div class="rating" data-rating="5">
+                        <span data-value="1">★</span>
+                        <span data-value="2">★</span>
+                        <span data-value="3">★</span>
+                        <span data-value="4">★</span>
+                        <span data-value="5">★</span>
+                    </div>
+                    <button class="fav">♡</button>
+                </div>
+
+                <div class="route-card" data-route="bahia-sol">
+                    <img src="../img/sanluis.jpg" alt="San Luis"> <div class="route-details">
+                        <h3>Bahía del Sol</h3>
+                        <p>Ruta costera 🌊 - a 25 minutos</p>
+                        <p>4.2 kilómetros de la parada</p>
+                    </div>
+                    <div class="rating" data-rating="4">
+                        <span data-value="1">★</span>
+                        <span data-value="2">★</span>
+                        <span data-value="3">★</span>
+                        <span data-value="4">★</span>
+                        <span data-value="5">★</span>
+                    </div>
+                    <button class="fav">♡</button>
+                </div>
+
+                <div class="route-card" data-route="laguna-coral">
+                    <img src="../img/centro.jpg" alt="Laguna Coral">
+                    <div class="route-details">
+                        <h3>Laguna Coral</h3>
+                        <p>Ruta natural 🌿 - a 30 minutos</p>
+                        <p>5.0 kilómetros de la parada</p>
+                    </div>
+                    <div class="rating" data-rating="4">
+                        <span data-value="1">★</span>
+                        <span data-value="2">★</span>
+                        <span data-value="3">★</span>
+                        <span data-value="4">★</span>
+                        <span data-value="5">★</span>
+                    </div>
+                    <button class="fav">♡</button>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <button class="tab active" data-tab="rutas">
+                <img src="../img/bus_1995993.png" alt="Rutas" class="tab-icon">
+                <span>Rutas</span>
+            </button>
+            <button class="tab" data-tab="historial">
+                <img src="../img/planning_12178861.png" alt="Historial" class="tab-icon">
+                <span>Historial</span>
+            </button>
+            <button class="tab" data-tab="cuenta">
+                <img src="../img/user-account_18962978.png" alt="Cuenta" class="tab-icon">
+                <span>Cuenta</span>
+            </button>
+        </footer>
+    </div>
+
+    <script src="../JS/visitante.js"></script>
+</body>
+</html>
+
+
+---------------------------------------------------------------------
+javascript
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    // --- Elementos de la interfaz ---
+    const residenteBtn = document.getElementById('residenteBtn');
+    const visitanteBtn = document.getElementById('visitanteBtn');
+    const residenteRoutesSection = document.getElementById('residenteRoutes');
+    const visitanteRoutesSection = document.getElementById('visitanteRoutes');
+    const toggleUserButtons = document.querySelectorAll('.toggle-user button'); // Todos los botones de Residente/Visitante
+    const tabs = document.querySelectorAll('.tab'); // Botones del footer
+    const backBtn = document.querySelector('.back-btn'); // Botón de volver
+
+
+    // --- Lógica de Favoritos ---
+    // Marca favoritos al hacer clic (ahora con prevención de propagación para no activar el click de la tarjeta)
+    document.querySelectorAll('.fav').forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.stopPropagation(); // Evita que el clic llegue al contenedor de la tarjeta
+            this.textContent = this.textContent === '♡' ? '♥' : '♡';
+            // Aquí puedes añadir lógica para guardar/eliminar de favoritos en un backend si lo tuvieras
+            if (this.textContent === '♥') {
+                console.log('Ruta añadida a favoritos');
+                // Puedes añadir una clase visual si quieres un efecto diferente
+                this.classList.add('favorited');
+            } else {
+                console.log('Ruta eliminada de favoritos');
+                this.classList.remove('favorited');
+            }
+        });
+    });
+
+    // --- Lógica de Estrellas Seleccionables ---
+    // Las estrellas son seleccionables (con prevención de propagación)
+    document.querySelectorAll('.rating span').forEach(star => {
+        star.addEventListener('click', function(e) {
+            e.stopPropagation(); // Evita que el clic llegue al contenedor de la tarjeta
+            const ratingDiv = this.parentElement;
+            const stars = ratingDiv.querySelectorAll('span');
+            const value = parseInt(this.getAttribute('data-value'));
+
+            // Actualiza visualmente las estrellas
+            stars.forEach((s, i) => {
+                if (i < value) {
+                    s.textContent = '★'; // Estrella llena
+                    s.style.color = '#FFD700'; // Color dorado
+                } else {
+                    s.textContent = '★'; // Para que todas sean '★' por defecto y el color las diferencie
+                    s.style.color = '#ccc'; // Gris para estrellas vacías
+                }
+            });
+            // Puedes guardar el valor seleccionado si lo deseas, por ejemplo, en una base de datos
+            ratingDiv.setAttribute('data-rating', value);
+            console.log(`Rating para esta ruta: ${value} estrellas`);
+        });
+    });
+
+    // Inicializar el color de las estrellas al cargar la página
+    document.querySelectorAll('.rating').forEach(ratingDiv => {
+        const rating = parseInt(ratingDiv.dataset.rating);
+        ratingDiv.querySelectorAll('span').forEach((star, index) => {
+            if (index < rating) {
+                star.style.color = '#FFD700'; // Dorado para estrellas llenas iniciales
+            } else {
+                star.style.color = '#ccc'; // Gris para estrellas vacías iniciales
+            }
+        });
+    });
+
+
+    // --- Lógica para cambiar entre Residente y Visitante ---
+    function displayUserSection(type) {
+        // Oculta ambas secciones
+        residenteRoutesSection.classList.add('hidden');
+        visitanteRoutesSection.classList.add('hidden');
+
+        // Muestra la sección correcta
+        if (type === 'residente') {
+            residenteRoutesSection.classList.remove('hidden');
+        } else if (type === 'visitante') {
+            visitanteRoutesSection.classList.remove('hidden');
+        }
+
+        // Actualiza la clase 'active' en los botones del toggle
+        toggleUserButtons.forEach(btn => btn.classList.remove('active'));
+        if (type === 'residente') {
+            residenteBtn.classList.add('active');
+        } else if (type === 'visitante') {
+            visitanteBtn.classList.add('active');
+        }
+    }
+
+    // Event listeners para los botones Residente/Visitante
+    residenteBtn.addEventListener('click', () => displayUserSection('residente'));
+    visitanteBtn.addEventListener('click', () => displayUserSection('visitante'));
+
+    // Asegurarse de que al cargar la página se muestre la sección de residente por defecto
+    // Opcional: Podrías leer un estado del almacenamiento local para recordar la última selección del usuario
+    displayUserSection('residente');
+
+
+    // --- Lógica para el Footer (Tabs) ---
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            // Remueve la clase 'active' y restablece iconos para todos los tabs
+            tabs.forEach(t => {
+                t.classList.remove('active');
+                const icon = t.querySelector('img');
+                const type = t.dataset.tab;
+                // Asegúrate de que tus iconos se llamen `icon-rutas.png`, `icon-historial.png`, etc.
+                // Si la imagen ya tiene la ruta completa, solo asegúrate de que el nombre base coincida.
+                if (icon) { // Asegura que el icono exista
+                    icon.src = `../img/icon-${type}.png`; // Volver al icono normal
+                }
+            });
+
+            // Añade la clase 'active' y actualiza el icono para el tab clicado
+            tab.classList.add('active');
+            const activeIcon = tab.querySelector('img');
+            const type = tab.dataset.tab;
+            // Asegúrate de que tus iconos activos se llamen `icon-rutas-active.png`, etc.
+            if (activeIcon) { // Asegura que el icono exista
+                activeIcon.src = `../img/icon-${type}-active.png`; // Icono activo
+            }
+            
+            // Aquí puedes añadir lógica para cambiar el contenido principal de la APP
+            // basándose en el data-tab (rutas, historial, cuenta)
+            console.log(`Tab activa: ${tab.dataset.tab}`);
+            // Por ejemplo, ocultar las secciones de rutas y mostrar otra sección de historial o cuenta
+            // if (type === 'historial') { /* Aquí puedes mostrar la sección de historial y ocultar las de rutas */ }
+            // else if (type === 'cuenta') { /* Aquí puedes mostrar la sección de cuenta y ocultar las de rutas */ }
+            // else if (type === 'rutas') { /* Aquí puedes asegurarte de que las secciones de rutas estén visibles */
+            //      // Si la pestaña "Rutas" está activa, asegúrate de mostrar la sección de rutas según el tipo de usuario activo
+            //      const currentActiveUserBtn = document.querySelector('.toggle-user button.active');
+            //      if (currentActiveUserBtn && currentActiveUserBtn.id === 'residenteBtn') {
+            //          displayUserSection('residente');
+            //      } else {
+            //          displayUserSection('visitante');
+            //      }
+            // }
+        });
+    });
+
+    // --- Lógica para el botón "back-btn" ---
+    if (backBtn) { // Asegúrate de que el botón exista antes de añadir el listener
+        backBtn.addEventListener('click', function() {
+            // Redirige al login.html (asumiendo que es tu página de inicio principal)
+            window.location.href = '../HTML/index.html';
+        });
+    }
+
+    // --- Lógica de redirección de Route-Card ---
+    document.querySelectorAll('.route-card').forEach(card => {
+        // Solo aplica la redirección si la tarjeta tiene un data-route
+        if (card.dataset.route) {
+            card.addEventListener('click', () => {
+                // Redirige al mapa y pasa el parámetro de la ruta
+                window.location.href = `../HTML/viajes.html?route=${card.dataset.route}`;
+            });
+        }
+    });
+
+}); // Fin de DOMContentLoaded
