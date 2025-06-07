@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ruta Dorada - Historial</title>
+    <link rel="stylesheet" href="../CSS/historial.css" />
+    </head>
+<body>
+    <div class="app-container">
+        <header>
+            <div class="styled-wrapper">
+                <button class="back-btn button" aria-label="Volver">
+                    <span class="button-box">←</span>
+                </button>
+            </div>
+            <div class="profile-pic"></div>
+        </header>
+
+        <section class="title-section">
+            <h1>Historial de Rutas</h1>
+            <p>Consulta tus trayectos pasados</p>
+        </section>
+
+        <main class="main-content">
+            <div id="historial-list" class="list-container">
+                <p class="text-center text-muted mt-5">Cargando historial...</p>
+            </div>
+        </main>
+
+        <footer>
+            <button class="tab" data-tab="rutas" onclick="window.location.href='residente.html'">
+                <img src="../img/bus_1995993.png" alt="Rutas" class="tab-icon">
+                <span>Rutas</span>
+            </button>
+            <button class="tab active" data-tab="historial">
+                <img src="../img/planning_12178861.png" alt="Historial" class="tab-icon">
+                <span>Historial</span>
+            </button>
+            <button class="tab" data-tab="cuenta" onclick="window.location.href='cuenta.html'">
+                <img src="../img/user-account_18962978.png" alt="Cuenta" class="tab-icon">
+                <span>Cuenta</span>
+            </button>
+        </footer>
+    </div>
+
+    <script src="../JS/historial.js"></script>
+</body>
+</html>

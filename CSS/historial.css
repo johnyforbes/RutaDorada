@@ -1,0 +1,365 @@
+/*
+ * Archivo: historial.css
+ * Estilos para la sección de historial, basándose en la estética de residente.css.
+ */
+
+/* Importa o copia los estilos generales de residente.css si no los quieres globalizar */
+/* Es más eficiente si residente.css contiene estilos base y este solo añade los específicos de historial */
+
+/* --- Estilos Generales Reutilizados de residente.css --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%; /* 1rem = 10px para facilitar los cálculos */
+}
+
+body {
+    font-family: 'Segoe UI', 'Open Sans', sans-serif;
+    background-color: hsla(244.85, 100%, 50%, 1);
+    background-image:
+        radial-gradient(circle at 50% 0%, rgb(0, 48, 65) 49.16%, transparent 102.23%),
+        url('../img/fondoResidente.jpg'); /* Asegúrate de que la ruta sea correcta */
+    background-blend-mode: normal;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #343a40;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.app-container {
+    max-width: 43rem;
+    width: 100%;
+    margin: 2rem auto;
+    border: 0.1rem solid #ccc;
+    background: white;
+    min-height: calc(100vh - 4rem);
+    display: flex;
+    flex-direction: column;
+    border-radius: 1.5rem;
+    box-shadow: 0 1rem 3rem rgba(0,0,0,0.2);
+    overflow: hidden;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    background-color: #f7f7f7;
+    border-bottom: 0.1rem solid #eee;
+}
+
+.back-btn {
+    font-size: 2.2rem;
+    background: none;
+    border: none;
+    transition: background 0.2s ease-in-out, transform 0.2s ease-in-out;
+    border-radius: 50%;
+    width: 4.5rem;
+    height: 4.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #34495e;
+}
+
+.back-btn:hover,
+.back-btn:focus {
+    background: #e0e0e0;
+    outline: none;
+    transform: scale(1.1);
+}
+
+.profile-pic {
+    width: 4.5rem;
+    height: 4.5rem;
+    background: url('../img/man-148582_1280.png') center/cover no-repeat;
+    border-radius: 50%;
+    border: 0.2rem solid #0073e6;
+    box-shadow: 0 0 0.8rem rgba(0, 115, 230, 0.3);
+}
+
+.title-section {
+    background: linear-gradient(to right, #0054a6, #0073e6);
+    color: white;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+}
+
+.title-section h1 {
+    font-size: 3.8rem;
+    margin-bottom: 0.8rem;
+    font-weight: 700;
+    letter-spacing: -0.1rem;
+    text-shadow: 0 0.2rem 0.4rem rgba(0,0,0,0.2);
+}
+
+.title-section p {
+    font-size: 1.5rem;
+    opacity: 0.9;
+    margin-bottom: 0; /* Ajustado, ya que no hay toggle aquí */
+}
+
+/* --- Main Content para Historial --- */
+.main-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.5rem;
+    -webkit-overflow-scrolling: touch;
+}
+
+.list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Espacio entre los elementos del historial */
+}
+
+/* Estilo para cada ítem del historial, similar a route-card */
+.historial-item {
+    background: white;
+    display: flex;
+    align-items: center;
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 0.2rem 0.8rem rgba(0,0,0,0.1);
+    border: 0.1rem solid #f0f0f0;
+    transition: all 0.3s ease-in-out;
+}
+
+.historial-item:hover {
+    box-shadow: 0 0.6rem 2rem rgba(0, 115, 230, 0.25), 0 0.2rem 0.8rem rgba(0,0,0,0.15);
+    border: 0.2rem solid #0073e6;
+    background: #e6f7ff;
+    transform: translateY(-0.3rem);
+    cursor: pointer;
+}
+
+.historial-icon {
+    width: 6rem; /* Tamaño para el icono */
+    height: 6rem;
+    min-width: 6rem; /* Asegura que el icono no se encoja */
+    margin-right: 1.5rem;
+    background-color: #0073e6; /* Fondo del icono */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3.5rem; /* Tamaño del icono si usas fuente de iconos */
+    color: white;
+    box-shadow: 0 0.2rem 0.5rem rgba(0,0,0,0.15);
+}
+
+/* Si estás usando imágenes para los iconos del historial, puedes usar esto */
+.historial-icon img {
+    width: 60%;
+    height: 60%;
+    object-fit: contain;
+}
+
+
+.historial-details {
+    flex-grow: 1;
+    font-size: 1.5rem;
+}
+
+.historial-details h3 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #0054a6;
+    font-weight: 600;
+}
+
+.historial-details p {
+    font-size: 1.4rem;
+    color: #6c757d;
+    line-height: 1.4;
+    margin-bottom: 0.3rem;
+}
+
+.historial-meta {
+    text-align: right;
+    font-size: 1.3rem;
+    color: #888;
+    white-space: nowrap; /* Evita que el texto de la fecha se rompa */
+}
+
+.historial-meta .costo {
+    font-weight: bold;
+    color: #28a745; /* Verde para el costo */
+}
+
+.historial-meta .rating {
+    font-size: 1.6rem;
+    color: #FFD700; /* Dorado para las estrellas */
+    margin-top: 0.5rem;
+}
+
+
+/* --- Footer (Barra de Navegación Inferior) - Reutilizado y Activo --- */
+footer {
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+    border-top: 0.1rem solid #ddd;
+    background: #f7f7f7;
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 -0.2rem 0.8rem rgba(0,0,0,0.1);
+}
+
+.tab {
+    border: none;
+    background: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #555;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    padding: 0.5rem 0;
+    transition: color 0.3s ease;
+}
+
+.tab-icon {
+    width: 2.4rem;
+    height: 2.4rem;
+    margin-bottom: 0.4rem;
+    transition: transform 0.3s, filter 0.3s;
+}
+
+.tab:hover .tab-icon,
+.tab:focus .tab-icon {
+    transform: scale(1.2) rotate(-10deg);
+    filter: brightness(1.2) drop-shadow(0 0.2rem 0.6rem #0073e655);
+}
+
+.tab.active span {
+    color: #0073e6;
+    font-weight: bold;
+}
+
+/* Asegura que el icono activo mantenga su color/efecto */
+.tab.active .tab-icon {
+    filter: brightness(1.2) drop-shadow(0 0.2rem 0.6rem #0073e655);
+    transform: scale(1.1); /* Ligeramente más grande para el activo */
+}
+
+
+/* --- Media Queries para Responsividad Reutilizadas --- */
+@media (max-width: 600px) {
+    body {
+        align-items: flex-start;
+    }
+    .app-container {
+        max-width: 100vw;
+        border: none;
+        border-radius: 0;
+        min-height: 100vh;
+        margin: 0;
+        box-shadow: none;
+    }
+
+    header {
+        padding: 1rem;
+    }
+
+    .title-section {
+        padding: 1.5rem 1rem;
+    }
+    .title-section h1 {
+        font-size: 3.2rem;
+    }
+    .title-section p {
+        font-size: 1.3rem;
+    }
+
+    .main-content {
+        padding: 1rem;
+    }
+
+    .historial-item {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.2rem;
+    }
+    .historial-icon {
+        width: 8rem;
+        height: 8rem;
+        min-width: 8rem;
+        margin-bottom: 1rem;
+        margin-right: 0;
+        font-size: 4rem;
+    }
+    .historial-icon img {
+        width: 70%;
+        height: 70%;
+    }
+    .historial-details {
+        width: 100%;
+    }
+    .historial-details h3 {
+        font-size: 1.8rem;
+    }
+    .historial-details p {
+        font-size: 1.3rem;
+    }
+    .historial-meta {
+        text-align: left; /* Alineación a la izquierda en móviles */
+        width: 100%;
+        margin-top: 0.8rem;
+    }
+
+    footer {
+        padding: 0.8rem;
+    }
+    .tab span {
+        font-size: 1.1rem;
+    }
+    .tab-icon {
+        width: 2.4rem;
+        height: 2.4rem;
+    }
+}
+
+/* Estilos para pantallas muy pequeñas (ej. iPhone SE) */
+@media (max-width: 380px) {
+    .title-section h1 {
+        font-size: 3rem;
+    }
+    .historial-icon {
+        width: 7rem;
+        height: 7rem;
+        min-width: 7rem;
+        font-size: 3rem;
+    }
+    .historial-icon img {
+        width: 65%;
+        height: 65%;
+    }
+    .historial-details h3 {
+        font-size: 1.7rem;
+    }
+    .historial-details p {
+        font-size: 1.2rem;
+    }
+    .historial-meta {
+        font-size: 1.2rem;
+    }
+}
