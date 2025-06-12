@@ -136,3 +136,35 @@ document.querySelectorAll('.rating span').forEach(star => {
             }
         });
     });
+
+// Generar y mostrar ocupación aleatoria en cada route-card
+document.querySelectorAll('.route-card').forEach(card => {
+  // Genera un porcentaje aleatorio entre 20% y 95%
+  const ocupacion = Math.floor(Math.random() * 76) + 20;
+  // Crea el párrafo
+  const p = document.createElement('p');
+  p.className = 'ocupacion';
+  p.textContent = `Ocupación actual: ${ocupacion}%`;
+  // Lo agrega al final de .route-details
+  const details = card.querySelector('.route-details');
+  if (details) {
+    details.appendChild(p);
+  }
+});
+
+// Generar y mostrar hora de llegada y distancia aleatorias en cada route-card
+document.querySelectorAll('.route-card').forEach(card => {
+  // Hora de llegada aleatoria entre 3 y 20 minutos
+  const minutos = Math.floor(Math.random() * 18) + 3;
+  const horaLlegada = card.querySelector('.hora-llegada');
+  if (horaLlegada) {
+    horaLlegada.textContent = `Ruta ${card.dataset.route} - a ${minutos} minutos`;
+  }
+
+  // Distancia aleatoria entre 0.5 y 3.0 km (con un decimal)
+  const distanciaKm = (Math.random() * 2.5 + 0.5).toFixed(1);
+  const distancia = card.querySelector('.distancia');
+  if (distancia) {
+    distancia.textContent = `${distanciaKm} kilómetros de la parada`;
+  }
+});
