@@ -59,26 +59,47 @@ tabs.forEach(tab => {
 });
 
 document.querySelectorAll('.route-card').forEach(card => {
-  const title = card.querySelector('h3');
-  if (title) {
-    const routeName = title.textContent.trim().toLowerCase();
-    // Normaliza el nombre para la URL
-    let routeParam = '';
-    if (routeName === 'centro') routeParam = 'centro';
-    else if (routeName === 'san luis') routeParam = 'sanluis';
-    else if (routeName === 'cove') routeParam = 'cove';
-    else if (routeName === 'loma') routeParam = 'loma';
-    if (routeParam) {
-      card.addEventListener('click', function(e) {
-        // Evita que el click en rating o fav active el mapa
-        if (
-          e.target.classList.contains('fav') ||
-          e.target.closest('.rating')
-        ) return;
-        window.location.href = `../HTML/viajes.html?route=${routeParam}`;
-      });
-    }
-  }
+  card.addEventListener('click', function(e) {
+    // Evita que el click en rating o fav active el historial
+    if (
+      e.target.classList.contains('fav') ||
+      e.target.closest('.rating')
+    ) return;
+
+    // Obtener datos de la ruta
+    const routeName = card.dataset.route;
+    const routeDetails = card.querySelector('.route-details');
+    const h3 = routeDetails ? routeDetails.querySelector('h3') : null;
+    const origen = "Origen desconocido"; // Puedes ajustar si tienes el dato
+    const destino = h3 ? h3.textContent : routeName;
+    const precio = card.parentElement.previousElementSibling
+      ? card.parentElement.previousElementSibling.querySelector('.precio').textContent.replace(/\D/g, '')
+      : "0";
+    const imagen = card.querySelector('img') ? card.querySelector('img').src : '';
+    const ratingDiv = card.querySelector('.rating');
+    const rating = ratingDiv ? parseInt(ratingDiv.getAttribute('data-rating')) : 0;
+
+    // Crear objeto historial
+    const historialItem = {
+      id: Date.now(),
+      ruta: routeName,
+      origen: origen,
+      destino: destino,
+      fecha: new Date().toISOString(),
+      costo: parseInt(precio),
+      rating: rating,
+      imagen: imagen,
+      normalizedRouteId: routeName
+    };
+
+    // Guardar en localStorage
+    let historial = JSON.parse(localStorage.getItem('historialRutas')) || [];
+    historial.unshift(historialItem); // Añade al inicio
+    localStorage.setItem('historialRutas', JSON.stringify(historial));
+
+    // Redirigir a viajes.html
+    window.location.href = `../HTML/viajes.html?route=${routeName}`;
+  });
 });
 
 // Botón volver: redirige al login

@@ -177,59 +177,14 @@ class HistorialApp {
     }
 }
 
-// --- DATOS DE EJEMPLO DEL HISTORIAL ---
-// Estos datos son la fuente de verdad y se usan para crear los objetos RutaHistorial
-const historialRawData = [
-    {
-        id: 1,
-        ruta: 'Ruta del Centro',
-        origen: 'Playa Spratt Bight',
-        destino: 'Centro Comercial',
-        fecha: '2024-05-30 09:30',
-        costo: 3500,
-        rating: 5,
-        imagen: '../img/centro.jpg',
-        normalizedRouteId: 'centro'
-    },
-    {
-        id: 2,
-        ruta: 'sanluis',
-        origen: 'Hotel Decameron',
-        destino: 'West View',
-        fecha: '2024-05-29 14:00',
-        costo: 4000,
-        rating: 4,
-        imagen: '../img/sanluis.jpg',
-        normalizedRouteId: 'sanluis'
-    },
-    {
-        id: 3,
-        ruta: 'loma',
-        origen: 'Parque Regional',
-        destino: 'entrada la laguna',
-        fecha: '2024-05-28 10:15',
-        costo: 3800,
-        rating: 3,
-        imagen: '../img/loma.jpg',
-        normalizedRouteId: 'loma'
-    },
-    {
-        id: 4,
-        ruta: 'cove',
-        origen: 'Aeropuerto',
-        destino: 'Hotel bluecove',
-        fecha: '2024-05-27 18:45',
-        costo: 5000,
-        rating: 5,
-        imagen: '../img/cove.jpg',
-        normalizedRouteId: 'cove'
-    }
-];
+
 
 // --- Inicialización de la aplicación del historial ---
 document.addEventListener('DOMContentLoaded', () => {
+    // Obtener historial guardado o usar vacío
+    const historialGuardado = JSON.parse(localStorage.getItem('historialRutas')) || [];
     new HistorialApp(
-        historialRawData,
+        historialGuardado,
         'historial-list',
         '.back-btn',
         'footer .tab'

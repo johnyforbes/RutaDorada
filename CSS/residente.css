@@ -436,3 +436,26 @@ footer {
         font-size: 1.8rem;
     }
 }
+
+
+.back-button {
+  background-color: #e1e1e1;
+  color: #333;
+  border: none;
+  border-radius: 12px;
+  padding: 8px 16px;
+  margin: 10px auto;
+  font-weight: bold;
+  cursor: pointer;
+  display: block;
+  width: fit-content;
+  transition: background-color 0.2s;
+}
+
+.back-button:hover {
+  background-color: #ccc;
+}
+.back-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #0073e6;
+}

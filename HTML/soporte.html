@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soporte Técnico - Ruta Dorada</title>
+  <link rel="stylesheet" href="../CSS/soporte.css">
+</head>
+<body>
+
+  <div class="chat-container">
+    <div class="chat-header">
+      <img src="../IMG/logo-2.jpeg" alt="Logo Ruta Dorada" class="logo">
+      <span>Soporte</span>
+      <span class="status">🟢 Online</span>
+    </div>
+
+    <div class="chat-box">
+      <!-- Aquí se insertan los mensajes -->
+    </div>
+
+    <div class="chat-input">
+      <input type="text" id="user-input" placeholder="Escribe tu mensaje aquí...">
+      <button id="send-btn">⬆️</button>
+    </div>
+
+    <div class="chat-options">
+      <button onclick="responderBoton('rutas')">🗺️ ¿Cuáles son las rutas?</button>
+      <button onclick="responderBoton('precio')">💰 Precios</button>
+      <button onclick="responderBoton('faqs')">🧠 FAQs</button>
+       <button class="back-button" onclick="_handleBackButtonClick()">🔙 Volver</button>
+    </div>
+  </div>
+  
+
+  <script src="../JS/soporte.js"></script>
+</body>
+</html>
