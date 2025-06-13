@@ -1,9 +1,3 @@
-// Proteger la página: solo usuarios logueados pueden acceder
-const usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
-if (!usuarioActivo) {
-  window.location.href = "../HTML/index.html"; // Redirige al login si no hay usuario activo
-}
-
 
 
 
@@ -56,4 +50,7 @@ document.getElementById("loginForm").addEventListener("submit", function(e) {
 function register() {
   window.location.href = "./registro.html";
 }
+
+const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+const usuario = usuarios.find(u => u.username === username && u.password === password);
 

@@ -1,11 +1,4 @@
 
-// Proteger la página: solo usuarios logueados pueden acceder
-const usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
-if (!usuarioActivo) {
-  window.location.href = "../HTML/index.html"; // Redirige al login si no hay usuario activo
-}
-
-
 
 class Usuario {
   constructor(nombre, apellido, id, telefono, pais, ciudad, password, tipo) {
@@ -38,6 +31,7 @@ function iniciarComo(tipo) {
 
   const usuario = new Usuario(nombre, apellido, id, telefono, pais, ciudad, password, tipo);
 
+  // Al enviar el formulario de registro
   const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
   usuarios.push(usuario);
   localStorage.setItem("usuarios", JSON.stringify(usuarios));
