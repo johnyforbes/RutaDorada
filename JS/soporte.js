@@ -7,7 +7,8 @@ class ChatBot {
       "Ruta 3: Johnny Cay → Acuario → Centro",
       "Ruta 4: Rocky Cay → La Loma → Centro"
     ];
-    this.precioBase = "El precio promedio por viaje es de $3.500 COP.";
+    this.precioBase = "El precio promedio por viaje es de $3.500 COP, y 4.000 para rutas de visitantes.";
+    
     this.faqs = [
       "¿Cómo puedo marcar una ruta como favorita?",
       "¿Necesito conexión a internet para usar la app?",
