@@ -1,3 +1,12 @@
+// Proteger la página: solo usuarios logueados pueden acceder
+const usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
+if (!usuarioActivo) {
+  window.location.href = "../HTML/index.html"; // Redirige al login si no hay usuario activo
+}
+
+
+
+
 class ChatBot {
   constructor(chatBoxId) {
     this.chatBox = document.querySelector(chatBoxId);
@@ -99,3 +108,4 @@ function responderBoton(tipo) {
 function _handleBackButtonClick() {
   history.back();
 }
+

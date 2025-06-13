@@ -1,3 +1,12 @@
+
+// Proteger la página: solo usuarios logueados pueden acceder
+const usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
+if (!usuarioActivo) {
+  window.location.href = "../HTML/index.html"; // Redirige al login si no hay usuario activo
+}
+
+
+
 class Usuario {
   constructor(nombre, apellido, id, telefono, pais, ciudad, password, tipo) {
     this.nombre = nombre;
@@ -9,6 +18,7 @@ class Usuario {
     this.password = password;
     this.tipo = tipo;
     this.username = id; // ID como nombre de usuario
+    this.historial = []; // <--- Añade esto
   }
 }
 
@@ -86,3 +96,4 @@ function iniciarComo(tipo) {
     window.location.href = "../HTML/visitante.html";
   }
 }
+

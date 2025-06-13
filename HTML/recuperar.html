@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recuperar Cuenta</title>
+  <link rel="stylesheet" href="../CSS/recuperar.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Recuperar Contraseña</h2>
+    <p id="mensaje">Verifica tu nombre de usuario y número</p>
+
+    <input type="text" id="usernameInput" placeholder="Nombre de usuario (ID)" required>
+    <input type="text" id="telefonoInput" placeholder="Número de teléfono" required>
+
+    <div id="passwordFields" style="display: none;">
+      <input type="password" id="nuevaPass" placeholder="Nueva contraseña" required>
+      <input type="password" id="confirmPass" placeholder="Confirmar contraseña" required>
+    </div>
+
+    <button onclick="continuar()">Continuar</button>
+    <a href=".index.html" class="volver">Volver al inicio de sesión</a>
+  </div>
+
+  <script src="../JS/recuperar.js"></script>
+</body>
+</html>

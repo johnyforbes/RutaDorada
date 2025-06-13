@@ -1,3 +1,9 @@
+// Proteger la página: solo usuarios logueados pueden acceder
+const usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
+if (!usuarioActivo) {
+  window.location.href = "../HTML/index.html"; // Redirige al login si no hay usuario activo
+}
+
 // Marca favoritos al hacer clic
 document.querySelectorAll('.fav').forEach(button => {
   button.addEventListener('click', () => {

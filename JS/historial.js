@@ -1,5 +1,17 @@
 // js/historial.js
 
+// Proteger la página: solo usuarios logueados pueden acceder
+const usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
+if (!usuarioActivo) {
+  window.location.href = "../HTML/index.html"; // Redirige al login si no hay usuario activo
+}
+
+
+
+
+
+
+
 /**
  * Clase que representa una Ruta en el historial.
  */
@@ -221,3 +233,58 @@ function initHistorial() {
 }
 
 document.addEventListener('DOMContentLoaded', initHistorial);
+
+
+// Esta función asume que ya estás guardando usuarios en localStorage
+// y que hay una variable que identifica el usuario que ha iniciado sesión.
+
+function obtenerUsuarioActual() {
+  // Recupera el ID del usuario logueado (deberías tener esta lógica ya definida al iniciar sesión)
+  return localStorage.getItem("usuarioActual");
+}
+
+function obtenerHistorialUsuario() {
+  const idUsuario = obtenerUsuarioActual();
+  if (!idUsuario) return [];
+
+  const historialGeneral = JSON.parse(localStorage.getItem("historialRutas")) || {};
+  return historialGeneral[idUsuario] || [];
+}
+
+// Función para agregar una ruta al historial del usuario activo
+function agregarRutaAlHistorial(ruta) {
+  let usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
+  if (!usuarioActivo) return;
+
+  // Agrega la ruta al historial
+  usuarioActivo.historial = usuarioActivo.historial || [];
+  usuarioActivo.historial.push(ruta);
+
+  // Actualiza el usuario en el array de usuarios
+  let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+  usuarios = usuarios.map(u => u.username === usuarioActivo.username ? usuarioActivo : u);
+  localStorage.setItem("usuarios", JSON.stringify(usuarios));
+  localStorage.setItem("usuarioActivo", JSON.stringify(usuarioActivo));
+}
+
+function mostrarHistorialEnHTML() {
+  const historial = obtenerHistorialUsuario();
+  const contenedor = document.getElementById("contenedorHistorial");
+  contenedor.innerHTML = "";
+
+  if (historial.length === 0) {
+    contenedor.innerHTML = "<p>No tienes rutas registradas en tu historial.</p>";
+    return;
+  }
+
+  historial.forEach(ruta => {
+    const div = document.createElement("div");
+    div.classList.add("item-ruta");
+    div.innerHTML = `
+      <h4>${ruta.nombre}</h4>
+      <p>Distancia: ${ruta.distancia}</p>
+      <p>Duración: ${ruta.duracion}</p>
+    `;
+    contenedor.appendChild(div);
+  });
+}
