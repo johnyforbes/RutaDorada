@@ -186,3 +186,10 @@ function agregarAccionAlHistorial(accion) {
   localStorage.setItem("usuarios", JSON.stringify(usuarios));
   localStorage.setItem("usuarioActivo", JSON.stringify(usuarioActivo));
 }
+
+// Redirigir al apartado de cuenta desde el botón de cuenta en el footer
+document.querySelectorAll('footer .tab[data-tab="cuenta"]').forEach(btn => {
+    btn.addEventListener('click', function() {
+        window.location.href = 'cuenta.html';
+    });
+});

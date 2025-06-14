@@ -1,67 +1,118 @@
+// cuenta.js
+
+// Esperar que cargue el DOM
 document.addEventListener('DOMContentLoaded', () => {
 
-    const totalCostElement = document.getElementById('total-cost');
-    const serviceCheckboxes = document.querySelectorAll('.service-checkbox');
-    let currentTotalCost = 0;
+    // Proteger la página: solo usuarios logueados pueden acceder (igual que en visitante.js)
+    const usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
+    if (!usuarioActivo) {
+        window.location.href = "../HTML/index.html"; // Redirige al login si no hay usuario activo
+        return; // Detener la ejecución del script
+    }
 
-    // Función para calcular y actualizar el costo total
-    const updateCostTotal = () => {
-        let newTotal = 0;
-        serviceCheckboxes.forEach(checkbox => {
-            if (checkbox.checked) {
-                newTotal += parseFloat(checkbox.dataset.cost);
+    // --- Funcionalidad de Notificaciones ---
+    const notificationButton = document.getElementById('notificationButton');
+    const notificationCountSpan = document.getElementById('notificationCount');
+
+    // Función para actualizar el contador de notificaciones
+    function updateNotificationCount() {
+        let notifications = JSON.parse(localStorage.getItem('notifications')) || [];
+        const unreadCount = notifications.filter(n => !n.read).length;
+        if (unreadCount > 0) {
+            notificationCountSpan.textContent = `+${unreadCount}`;
+            notificationCountSpan.style.display = 'inline-block';
+        } else {
+            notificationCountSpan.style.display = 'none';
+        }
+    }
+
+    // Redirigir a la página de notificaciones al hacer clic en el botón
+    if (notificationButton) {
+        notificationButton.addEventListener('click', () => {
+            window.location.href = '../HTML/notificaciones.html';
+        });
+    }
+
+    // Inicializar el contador de notificaciones al cargar la página
+    updateNotificationCount();
+
+    // Funcionalidad para los checkboxes de los descuentos
+    document.querySelectorAll('.discount-item .checkbox-container input[type="checkbox"]').forEach(checkbox => {
+        checkbox.addEventListener('change', (event) => {
+            const discountText = event.target.closest('.discount-item').querySelector('.discount-details').textContent;
+            if (event.target.checked) {
+                console.log(`Descuento "${discountText}" activado.`);
+                agregarAccionAlHistorial(`Activado descuento: ${discountText}`);
+            } else {
+                console.log(`Descuento "${discountText}" desactivado.`);
+                agregarAccionAlHistorial(`Desactivado descuento: ${discountText}`);
             }
         });
-        currentTotalCost = newTotal;
-        totalCostElement.textContent = `${currentTotalCost.toLocaleString('es-CO')} $`; // Formato de moneda
-    };
-
-    // Inicializar el costo total al cargar la página
-    updateCostTotal();
-
-    // Event listener para las casillas de verificación de servicio
-    serviceCheckboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', updateCostTotal);
     });
 
-    // Manejar el clic en los elementos de navegación
-    const navItems = document.querySelectorAll('.nav-item');
-    navItems.forEach(item => {
-        item.addEventListener('click', () => {
-            navItems.forEach(nav => nav.classList.remove('active'));
-            item.classList.add('active');
-            const navText = item.querySelector('.nav-text').textContent;
-            console.log(`¡Pestaña "${navText}" clicada!`);
-            // Aquí puedes añadir lógica para cambiar el contenido de la aplicación
+    // Lógica para los tabs del footer (replicado y adaptado de visitante.js)
+    const tabs = document.querySelectorAll('footer .tab');
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', (event) => {
+            event.preventDefault(); // Prevenir la navegación predeterminada
+
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+
+            const tabName = tab.dataset.tab;
+
+            if (tabName === 'rutas') {
+                window.location.href = '../HTML/visitante.html';
+            } else if (tabName === 'historial') {
+                window.location.href = '../HTML/historial.html';
+            } else if (tabName === 'cuenta') {
+                // Ya estamos en cuenta.html, no hacemos nada o recargamos si es necesario.
+            }
         });
     });
 
-    // Convertir soporte de usuario en un botón
-    const searchButton = document.querySelector('.search-button');
-    searchButton.addEventListener('click', () => {
-        alert('Botón de "Soporte de usuario" clicado. Aquí iría la función de búsqueda o un modal de soporte.');
-        // Puedes redirigir a una página de soporte, abrir un modal de chat, etc.
+    // Lógica para el botón "Volver" (back-btn) en el header (replicado de visitantes.js si aplica)
+    const backButton = document.querySelector('.back-btn');
+    if (backButton) {
+        backButton.addEventListener('click', () => {
+            window.history.back();
+        });
+    }
+
+    // Función para agregar acciones al historial del usuario activo (replicada de visitante.js)
+    function agregarAccionAlHistorial(accion) {
+        let usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
+        if (!usuarioActivo) return;
+
+        if (!usuarioActivo.historial) {
+            usuarioActivo.historial = [];
+        }
+        usuarioActivo.historial.push({
+            tipo: "cuenta",
+            descripcion: accion,
+            fecha: new Date().toISOString()
+        });
+
+        let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+        usuarios = usuarios.map(u => u.username === usuarioActivo.username ? usuarioActivo : u);
+        localStorage.setItem("usuarios", JSON.stringify(usuarios));
+        localStorage.setItem("usuarioActivo", JSON.stringify(usuarioActivo));
+        console.log("Acción agregada al historial del usuario activo:", accion);
+    }
+    // Redirigir al apartado de historial desde el botón de historial en el footer
+    document.querySelectorAll('footer .tab[data-tab="historial"]').forEach(btn => {
+        btn.addEventListener('click', function() {
+            window.location.href = 'historial.html';
+        });
     });
 
-    // Convertir notificaciones en un botón
-    const notificationsButton = document.getElementById('notifications-button');
-    notificationsButton.addEventListener('click', () => {
-        alert('Botón de "NOTIFICACIONES" clicado. Aquí iría la sección de notificaciones.');
-        // Lógica para mostrar notificaciones
-    });
-
-    // Convertir San Andrés Islas en un botón
-    const sanAndresButton = document.getElementById('san-andres-button');
-    sanAndresButton.addEventListener('click', () => {
-        alert('Botón de "SAN ANDRES ISLAS" clicado. Aquí iría la información de la ubicación.');
-        // Lógica para mostrar detalles de San Andrés
-    });
-
-    // Nuevo botón de Rutas Favoritas
-    const favoriteRoutesButton = document.getElementById('favorite-routes-button');
-    favoriteRoutesButton.addEventListener('click', () => {
-        alert('Botón de "RUTAS FAVORITAS" clicado. Aquí iría la lista de rutas favoritas.');
-        // Lógica para mostrar rutas favoritas
+    // Redirigir al apartado de cuenta desde el botón de cuenta en el footer
+    document.querySelectorAll('footer .tab[data-tab="cuenta"]').forEach(btn => {
+        btn.addEventListener('click', function() {
+            window.location.href = 'cuenta.html';
+        });
     });
 
 });
+
