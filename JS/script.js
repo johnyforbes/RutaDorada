@@ -33,6 +33,10 @@ document.getElementById("loginForm").addEventListener("submit", function(e) {
   }
 });
 
+document.getElementById("forgotPasswordBtn").addEventListener("click", function() {
+  window.location.href = "./recuperar.html";
+});
+
 function register() {
   window.location.href = "./registro.html";
 }
