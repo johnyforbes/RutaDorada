@@ -75,10 +75,19 @@ document.querySelectorAll('.route-card').forEach(card => {
       normalizedRouteId: routeName
     };
 
-    // Guardar en localStorage
-    let historial = JSON.parse(localStorage.getItem('historialRutas')) || [];
-    historial.unshift(historialItem); // Añade al inicio
-    localStorage.setItem('historialRutas', JSON.stringify(historial));
+    // Guardar en el historial del usuario activo (correcto)
+    let usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
+    if (!usuarioActivo) return;
+
+    // Añade la ruta al inicio del historial del usuario
+    usuarioActivo.historial = usuarioActivo.historial || [];
+    usuarioActivo.historial.unshift(historialItem);
+
+    // Actualiza el usuario en el array de usuarios
+    let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+    usuarios = usuarios.map(u => u.username === usuarioActivo.username ? usuarioActivo : u);
+    localStorage.setItem("usuarios", JSON.stringify(usuarios));
+    localStorage.setItem("usuarioActivo", JSON.stringify(usuarioActivo));
 
     // Redirigir a viajes.html
     window.location.href = `../HTML/viajes.html?route=${routeName}`;

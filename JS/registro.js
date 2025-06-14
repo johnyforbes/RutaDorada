@@ -97,3 +97,12 @@ function iniciarComo(tipo) {
   }
 }
 
+const usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
+if (!usuarioActivo) {
+  window.location.href = "../HTML/index.html";
+} else if (usuarioActivo.historial) {
+  usuarioActivo.historial.forEach(accion => {
+    // Crea y muestra elementos HTML con los datos de la acción
+  });
+}
+

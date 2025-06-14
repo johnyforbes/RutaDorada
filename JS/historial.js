@@ -10,12 +10,6 @@ if (!usuarioActivo) {
   });
 }
 
-
-
-
-
-
-
 /**
  * Clase que representa una Ruta en el historial.
  */
@@ -98,30 +92,12 @@ class HistorialApp {
         // La navegación a otras secciones se define con onclick en el HTML
     }
 
-    // --- Versión original de renderHistorial (comentada) ---
-    /*
-    renderHistorial() {
-        this.historialListElement.innerHTML = '';
-
-        if (this.historialData.length === 0) {
-            this.historialListElement.innerHTML = '<p class="text-center text-muted mt-5">No hay historial de rutas disponibles.</p>';
-            return;
-        }
-
-        this.historialData.forEach(item => {
-            const div = this._createHistorialItemElement(item);
-            this.historialListElement.appendChild(div);
-        });
-
-        this._addHistorialItemClickListeners();
-    }
-    */
-
     // --- Nueva versión de renderHistorial con eliminación dinámica ---
     renderHistorial() {
-        // Refrescar datos desde localStorage
-        const almacenado = JSON.parse(localStorage.getItem('historialRutas')) || [];
-        this.historialData = this._createRutaHistorialObjects(almacenado);
+        // Refrescar datos desde el historial del usuario activo
+        let usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
+        if (!usuarioActivo) return;
+        this.historialData = this._createRutaHistorialObjects(usuarioActivo.historial || []);
 
         this.historialListElement.innerHTML = '';
 
@@ -136,33 +112,6 @@ class HistorialApp {
         });
     }
 
-    // --- Versión original de _createHistorialItemElement (comentada) ---
-    /*
-    _createHistorialItemElement(item) {
-        const historialItemDiv = document.createElement('div');
-        historialItemDiv.classList.add('historial-item');
-        historialItemDiv.dataset.routeId = item.normalizedRouteId;
-
-        historialItemDiv.innerHTML = `
-            <div class="historial-icon">
-                <img src="${item.imagen}" alt="Ícono de ruta ${item.ruta}">
-            </div>
-            <div class="historial-details">
-                <h3>${item.ruta}</h3>
-                <p>De: ${item.origen}</p>
-                <p>A: ${item.destino}</p>
-            </div>
-            <div class="historial-meta">
-                <p>${item.getFormattedFecha()}</p>
-                <p class="costo">${item.getFormattedCosto()}</p>
-                <div class="rating">${item.getStarsHtml()}</div>
-            </div>
-        `;
-        return historialItemDiv;
-    }
-    */
-
-    // --- Nueva _createHistorialItemElement con botón Eliminar dentro del icono ---
     _createHistorialItemElement(item, index) {
         const tarjeta = document.createElement('div');
         tarjeta.classList.add('historial-item');
@@ -193,12 +142,18 @@ class HistorialApp {
         btnEliminar.textContent = '✕';  // Icono de cruz para más discreto
         btnEliminar.classList.add('btn-eliminar');
         btnEliminar.addEventListener('click', () => {
-            // Eliminar del DOM
-            tarjeta.remove();
-            // Eliminar del almacenamiento
-            const rutas = JSON.parse(localStorage.getItem('historialRutas')) || [];
-            rutas.splice(index, 1);
-            localStorage.setItem('historialRutas', JSON.stringify(rutas));
+            // Eliminar del historial del usuario activo
+            let usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
+            if (!usuarioActivo) return;
+            usuarioActivo.historial = usuarioActivo.historial || [];
+            usuarioActivo.historial.splice(index, 1);
+
+            // Actualiza el usuario en el array de usuarios
+            let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+            usuarios = usuarios.map(u => u.username === usuarioActivo.username ? usuarioActivo : u);
+            localStorage.setItem("usuarios", JSON.stringify(usuarios));
+            localStorage.setItem("usuarioActivo", JSON.stringify(usuarioActivo));
+
             // Re-renderizar para reindexar
             this.renderHistorial();
         });
@@ -232,64 +187,24 @@ class HistorialApp {
 
 // Inicialización
 function initHistorial() {
-    const datos = JSON.parse(localStorage.getItem('historialRutas')) || [];
+    let usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
+    const datos = usuarioActivo && usuarioActivo.historial ? usuarioActivo.historial : [];
     new HistorialApp(datos, 'historial-list', '.back-btn', 'footer .tab');
 }
 
 document.addEventListener('DOMContentLoaded', initHistorial);
 
-
-// Esta función asume que ya estás guardando usuarios en localStorage
-// y que hay una variable que identifica el usuario que ha iniciado sesión.
-
-function obtenerUsuarioActual() {
-  // Recupera el ID del usuario logueado (deberías tener esta lógica ya definida al iniciar sesión)
-  return localStorage.getItem("usuarioActual");
-}
-
-function obtenerHistorialUsuario() {
-  const idUsuario = obtenerUsuarioActual();
-  if (!idUsuario) return [];
-
-  const historialGeneral = JSON.parse(localStorage.getItem("historialRutas")) || {};
-  return historialGeneral[idUsuario] || [];
-}
-
 // Función para agregar una ruta al historial del usuario activo
-function agregarRutaAlHistorial(ruta) {
-  let usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
-  if (!usuarioActivo) return;
+function agregarRutaAlHistorial(historialItem) {
+    let usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
+    if (!usuarioActivo) return;
 
-  // Agrega la ruta al historial
-  usuarioActivo.historial = usuarioActivo.historial || [];
-  usuarioActivo.historial.push(ruta);
+    usuarioActivo.historial = usuarioActivo.historial || [];
+    usuarioActivo.historial.unshift(historialItem);
 
-  // Actualiza el usuario en el array de usuarios
-  let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-  usuarios = usuarios.map(u => u.username === usuarioActivo.username ? usuarioActivo : u);
-  localStorage.setItem("usuarios", JSON.stringify(usuarios));
-  localStorage.setItem("usuarioActivo", JSON.stringify(usuarioActivo));
-}
-
-function mostrarHistorialEnHTML() {
-  const historial = obtenerHistorialUsuario();
-  const contenedor = document.getElementById("contenedorHistorial");
-  contenedor.innerHTML = "";
-
-  if (historial.length === 0) {
-    contenedor.innerHTML = "<p>No tienes rutas registradas en tu historial.</p>";
-    return;
-  }
-
-  historial.forEach(ruta => {
-    const div = document.createElement("div");
-    div.classList.add("item-ruta");
-    div.innerHTML = `
-      <h4>${ruta.nombre}</h4>
-      <p>Distancia: ${ruta.distancia}</p>
-      <p>Duración: ${ruta.duracion}</p>
-    `;
-    contenedor.appendChild(div);
-  });
+    let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+    usuarios = usuarios.map(u => u.username === usuarioActivo.username ? usuarioActivo : u);
+    localStorage.setItem("usuarios", JSON.stringify(usuarios));
+    localStorage.setItem("usuarioActivo", JSON.stringify(usuarioActivo));
 }
 
