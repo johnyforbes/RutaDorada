@@ -202,3 +202,11 @@ document.querySelectorAll('footer .tab[data-tab="cuenta"]').forEach(btn => {
         window.location.href = 'cuenta.html';
     });
 });
+
+// Ejemplo de registro.js
+document.getElementById('form-registro').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const nombre = document.getElementById('nombre').value;
+    localStorage.setItem('username', nombre);
+    // Redirige a cuenta.html o login si es necesario
+});

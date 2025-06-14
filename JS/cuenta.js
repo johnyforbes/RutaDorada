@@ -114,5 +114,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Mostrar el nombre del usuario en el header si está en localStorage
+    document.addEventListener('DOMContentLoaded', function() {
+        const username = localStorage.getItem('username');
+        if (username && document.querySelector('.header-title')) {
+            document.querySelector('.header-title').textContent = username;
+        }
+    });
+
 });
 
