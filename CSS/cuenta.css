@@ -1,0 +1,325 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0; /* Fondo gris claro */
+    display: flex;
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: flex-start; /* Alinear desde la parte superior */
+    min-height: 100vh; /* Asegura que el body ocupe toda la altura de la ventana */
+    padding: 20px; /* Añadir algo de relleno alrededor del contenedor */
+    box-sizing: border-box; /* Incluir el relleno en el ancho y alto total del elemento */
+}
+
+.app-container {
+    background-color: #fff;
+    width: 375px; /* Ancho fijo para simular un celular */
+    /* REMOVIDO: height: 812px; -- Permitía que el contenido se cortara */
+    /* REMOVIDO: max-height: 95vh; -- Impedía que creciera si el contenido era mayor */
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    min-height: 600px; /* Un valor inicial razonable, puedes ajustarlo */
+    overflow: hidden; /* Asegura que las esquinas redondeadas sean visibles y que el contenido no se desborde horizontalmente */
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    flex-shrink: 0; /* Evita que el header se encoja */
+}
+
+.header-left {
+    display: flex;
+    gap: 10px;
+}
+
+.menu-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+}
+
+.icon-button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Reglas para iconos de sol/luna negros */
+.dark-icon {
+    color: #000; /* Color negro */
+}
+
+
+.header-title {
+    margin: 0;
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+}
+
+.profile-picture {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #5C6BC0; /* Example border color */
+}
+
+/* Balance Section */
+.balance-section {
+    padding: 20px;
+    text-align: center;
+    flex-shrink: 0; /* Evita que se encoja */
+}
+
+.balance-card {
+    background-color: #E0E0E0; /* Lighter gray for the card */
+    border-radius: 10px;
+    padding: 15px 20px;
+    display: inline-block; /* To make it wrap content */
+}
+
+.balance-card p {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.balance-card .cost-info {
+    font-size: 14px;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* Services List Section */
+.services-list-section {
+    padding: 0 20px;
+    margin-top: 15px;
+    flex-grow: 1; /* Permite que esta sección crezca para ocupar el espacio disponible */
+    overflow-y: auto; /* Agrega scroll si el contenido excede el alto */
+    -webkit-overflow-scrolling: touch; /* Suaviza el scroll en iOS */
+    min-height: 100px; /* Ajusté el min-height a un valor más bajo */
+}
+
+.services-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: #E8E0FB; /* Purple background as in image */
+    border-radius: 10px;
+    overflow: hidden; /* For inner borders */
+}
+
+.service-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3); /* Lighter separator */
+}
+
+.service-item:last-child {
+    border-bottom: none;
+}
+
+.service-initial-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.4); /* Slightly transparent white */
+    color: #5C6BC0; /* Example text color for initial */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.service-description {
+    flex-grow: 1;
+    font-size: 16px;
+    color: #333; /* Darker text for description */
+}
+
+.service-checkbox {
+    width: 20px;
+    height: 20px;
+    accent-color: #5C6BC0; /* Custom color for checkbox */
+    cursor: pointer;
+}
+
+/* Search Section - ahora es un botón */
+.search-section {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    gap: 10px;
+    flex-shrink: 0; /* Evita que se encoja */
+}
+
+.search-button {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    background-color: #D3D3D3; /* Gray background for search */
+    border-radius: 25px;
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+}
+
+.search-icon {
+    font-size: 18px;
+    color: #666;
+    margin-right: 8px;
+}
+
+.search-text {
+    font-size: 16px;
+    color: #333;
+    white-space: nowrap; /* Evita que el texto se rompa */
+    overflow: hidden; /* Oculta el texto si es demasiado largo */
+    text-overflow: ellipsis; /* Añade puntos suspensivos si se recorta */
+}
+
+.add-button {
+    background-color: #5C6BC0; /* Blue color for add button */
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+/* App Settings Section - ahora los items son botones */
+.app-settings-section {
+    padding: 0 20px;
+    margin-top: 15px;
+    padding-bottom: 20px;
+    flex-shrink: 0; /* Evita que se encoja */
+}
+
+.setting-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+    background: none; /* Eliminar fondo de botón */
+    border: none; /* Eliminar borde de botón */
+    width: 100%; /* Ocupar todo el ancho disponible */
+    text-align: left; /* Alinear texto a la izquierda */
+    cursor: pointer;
+}
+
+.setting-item:last-child {
+    border-bottom: none;
+}
+
+.setting-icon {
+    font-size: 22px;
+    color: #5C6BC0; /* Blue color for icons */
+    margin-right: 15px;
+    width: 25px; /* Fixed width for alignment */
+    text-align: center;
+}
+
+.setting-text {
+    flex-grow: 1;
+    font-size: 16px;
+    color: #333;
+    font-weight: bold; /* Some settings look bolder */
+}
+
+.notification-count {
+    background-color: #FF5252; /* Red color for notification */
+    color: #fff;
+    padding: 3px 8px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Bottom Navigation - Rediseño */
+.bottom-navigation {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start; /* Alinear elementos al inicio para permitir padding interno */
+    background-color: #fff;
+    border-top: 1px solid #eee;
+    padding: 10px 0; /* Menos padding vertical para mejor ajuste */
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    flex-shrink: 0; /* Evita que la navegación se encoja */
+}
+
+.nav-item {
+    background: none;
+    border: none;
+    display: flex;
+    flex-direction: column; /* Icono arriba, texto abajo */
+    align-items: center;
+    cursor: pointer;
+    padding: 8px 0; /* Ajustar padding para más espacio interno */
+    color: #999;
+    flex: 1; /* Permite que los elementos se distribuyan uniformemente */
+    position: relative; /* Para el indicador activo si se añade */
+}
+
+.nav-item.active {
+    color: #5C6BC0; /* Color activo */
+    border-radius: 5px; /* Si deseas un fondo redondeado */
+}
+
+/* Indicador tipo burbuja (ejemplo, puedes ajustarlo) */
+.nav-item.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0px; /* Ajusta la posición vertical */
+    width: 6px;
+    height: 6px;
+    background-color: #5C6BC0; /* Color del indicador */
+    border-radius: 50%;
+    transform: translateY(100%); /* Lo saca un poco del botón */
+}
+
+
+.nav-item .nav-icon {
+    font-size: 24px;
+    margin-bottom: 3px;
+}
+
+.nav-item .nav-text {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Responsiveness (keeps the fixed size simulation but allows some flexibility) */
+@media (max-width: 400px) {
+    .app-container {
+        width: 100%;
+        /* La altura se ajustará al contenido */
+        border-radius: 0;
+        box-shadow: none;
+    }
+    body {
+        padding: 0;
+    }
+}

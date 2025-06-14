@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saldo App</title>
+    <link rel="stylesheet" href="/CSS/cuenta.css">
+    </head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <div class="header-left">
+                <button class="menu-button">&#9776;</button> <button class="icon-button dark-icon">☀️</button> <button class="icon-button dark-icon">🌙</button> </div>
+            <h1 class="header-title">Saldo</h1>
+            <div class="header-right">
+                <img src="/img/user_12483574.png" alt="Foto de perfil de usuario" class="profile-picture">
+            </div>
+        </header>
+
+        <section class="balance-section">
+            <div class="balance-card">
+                <p id="total-cost">20.000 $</p> <p class="cost-info">Costo de servicios</p>
+            </div>
+        </section>
+
+        <section class="services-list-section">
+            <ul class="services-list">
+                <li class="service-item">
+                    <div class="service-initial-circle">S</div>
+                    <span class="service-description">• San Luis - 3.500</span>
+                    <input type="checkbox" checked class="service-checkbox" data-cost="3500">
+                </li>
+                <li class="service-item">
+                    <div class="service-initial-circle">L</div>
+                    <span class="service-description">• Loma - 3.500</span>
+                    <input type="checkbox" checked class="service-checkbox" data-cost="3500">
+                </li>
+                <li class="service-item">
+                    <div class="service-initial-circle">S</div>
+                    <span class="service-description">• San Luis - 3.500</span>
+                    <input type="checkbox" checked class="service-checkbox" data-cost="3500">
+                </li>
+                <li class="service-item">
+                    <div class="service-initial-circle">S</div>
+                    <span class="service-description">• San Luis - 3.500</span>
+                    <input type="checkbox" checked class="service-checkbox" data-cost="3500">
+                </li>
+                <li class="service-item">
+                    <div class="service-initial-circle">C</div>
+                    <span class="service-description">• Cove - 2.000 • Pomo Ocre</span>
+                    <input type="checkbox" checked class="service-checkbox" data-cost="2000">
+                </li>
+            </ul>
+        </section>
+
+        <section class="search-section">
+            <button class="search-button">
+                <span class="search-icon">🔍</span>
+                <span class="search-text">soporte de usuario</span>
+            </button>
+            <button class="add-button">+</button>
+        </section>
+
+        <section class="app-settings-section">
+            <button class="setting-item" id="notifications-button">
+                <span class="setting-icon">🔔</span>
+                <span class="setting-text">NOTIFICACIONES</span>
+                <span class="notification-count">+10</span>
+            </button>
+            <button class="setting-item" id="san-andres-button">
+                <span class="setting-icon">📍</span>
+                <span class="setting-text">SAN ANDRES ISLAS</span>
+            </button>
+            <button class="setting-item" id="favorite-routes-button">
+                <span class="setting-icon">❤️</span> <span class="setting-text">RUTAS FAVORITAS</span>
+            </button>
+            </section>
+
+        <nav class="bottom-navigation">
+            <button class="nav-item">
+                <span class="nav-icon">🗺️</span> <span class="nav-text">Rutas</span>
+            </button>
+            <button class="nav-item">
+                <span class="nav-icon">📜</span> <span class="nav-text">Historial</span>
+            </button>
+            <button class="nav-item active">
+                <span class="nav-icon">👤</span> <span class="nav-text">Cuenta</span>
+            </button>
+        </nav>
+    </div>
+
+    <script src="/JS/cuenta.js"></script>
+</body>
+</html>
