@@ -14,7 +14,7 @@
     <div class="container">
         <h1><span class="ruta">Ruta</span><span class="dorada">Dorada</span></h1>
         
-        <form class="formulario" id="registroForm">
+        <form class="formulario" id="formRegistro">
             <input type="text" id="nombre" placeholder="Nombre / Name" required />
             <input type="text" id="apellido" placeholder="Apellido / LastName" required />
             <input type="text" id="id" placeholder="ID / CC" required />
@@ -26,10 +26,16 @@
             </select>
             
             <input type="text" id="ciudad" placeholder="Ciudad o Departamento / City" required />
-            <input type="password" id="contrasena" placeholder="Contraseña / Password" required />
+            <input type="password" id="password" placeholder="Contraseña / Password" required />
             
-           
-            <button type="button" class="turista" onclick="iniciarComo('turista')">Iniciar</button>
+            <label>
+                <input type="radio" name="tipo" value="residente" required> Residente
+            </label>
+            <label>
+                <input type="radio" name="tipo" value="turista" required> Turista
+            </label>
+            
+            <button type="submit">Registrarse</button>
         </form>
     </div>
 

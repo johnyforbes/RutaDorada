@@ -1,7 +1,7 @@
 // Proteger la página: solo usuarios logueados pueden acceder
 const usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
 if (!usuarioActivo) {
-  window.location.href = "../HTML/index.html"; // Redirige al login si no hay usuario activo
+  window.location.href = "./index.html";
 }
 
 // Marca favoritos al hacer clic
@@ -174,3 +174,15 @@ document.querySelectorAll('.route-card').forEach(card => {
     distancia.textContent = `${distanciaKm} kilómetros de la parada`;
   }
 });
+
+function agregarAccionAlHistorial(accion) {
+  let usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
+  if (!usuarioActivo) return;
+
+  usuarioActivo.historial.push(accion);
+
+  let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+  usuarios = usuarios.map(u => u.username === usuarioActivo.username ? usuarioActivo : u);
+  localStorage.setItem("usuarios", JSON.stringify(usuarios));
+  localStorage.setItem("usuarioActivo", JSON.stringify(usuarioActivo));
+}

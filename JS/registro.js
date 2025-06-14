@@ -1,44 +1,50 @@
-
-
 class Usuario {
   constructor(nombre, apellido, id, telefono, pais, ciudad, password, tipo) {
     this.nombre = nombre;
     this.apellido = apellido;
-    this.id = id;
+    this.username = id;
     this.telefono = telefono;
     this.pais = pais;
     this.ciudad = ciudad;
     this.password = password;
     this.tipo = tipo;
-    this.username = id; // ID como nombre de usuario
-    this.historial = []; // <--- Añade esto
+    this.historial = [];
   }
 }
 
-function iniciarComo(tipo) {
+function registrarUsuario() {
   const nombre = document.getElementById("nombre").value.trim();
   const apellido = document.getElementById("apellido").value.trim();
   const id = document.getElementById("id").value.trim();
   const telefono = document.getElementById("telefono").value.trim();
   const pais = document.getElementById("pais").value;
   const ciudad = document.getElementById("ciudad").value.trim();
-  const password = document.getElementById("contrasena").value;
+  const password = document.getElementById("password").value;
+  const tipo = document.querySelector('input[name="tipo"]:checked').value;
 
-  if (!nombre || !apellido || !id || !telefono || !pais || !ciudad || !password) {
-    alert("Por favor, completa todos los campos");
+  if (!nombre || !apellido || !id || !telefono || !pais || !ciudad || !password || !tipo) {
+    alert("Por favor, completa todos los campos.");
     return;
   }
 
-  const usuario = new Usuario(nombre, apellido, id, telefono, pais, ciudad, password, tipo);
-
-  // Al enviar el formulario de registro
   const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-  usuarios.push(usuario);
-  localStorage.setItem("usuarios", JSON.stringify(usuarios));
+  if (usuarios.some(u => u.username === id)) {
+    alert("El usuario ya existe.");
+    return;
+  }
 
-  alert("Registro exitoso. Redireccionando al login...");
+  const nuevoUsuario = new Usuario(nombre, apellido, id, telefono, pais, ciudad, password, tipo);
+  usuarios.push(nuevoUsuario);
+  localStorage.setItem("usuarios", JSON.stringify(usuarios));
+  alert("¡Registro exitoso! Ahora puedes iniciar sesión.");
   window.location.href = "./index.html";
 }
+
+document.getElementById("formRegistro").addEventListener("submit", function(e) {
+  e.preventDefault();
+  registrarUsuario();
+});
+
 // Inicializar el input de teléfono con prefijos internacionales
 const inputTelefono = document.querySelector("#telefono");
 

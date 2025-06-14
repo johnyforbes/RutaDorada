@@ -4,6 +4,10 @@
 const usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
 if (!usuarioActivo) {
   window.location.href = "../HTML/index.html"; // Redirige al login si no hay usuario activo
+} else if (usuarioActivo.historial) {
+  usuarioActivo.historial.forEach(accion => {
+    // Crea y muestra elementos HTML con los datos de la acción
+  });
 }
 
 
@@ -288,3 +292,4 @@ function mostrarHistorialEnHTML() {
     contenedor.appendChild(div);
   });
 }
+
