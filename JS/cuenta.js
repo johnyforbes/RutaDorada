@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = "../HTML/index.html"; // Redirige al login si no hay usuario activo
         return; // Detener la ejecución del script
     }
+    
 
     // --- Funcionalidad de Notificaciones ---
     const notificationButton = document.getElementById('notificationButton');
