@@ -1,0 +1,306 @@
+/*
+ * Archivo: notificaciones.css
+ * Base de estilo de visitantes.css para la interfaz de Notificaciones.
+ * Mantiene la estructura general y colores base.
+*/
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%; /* 1rem = 10px para facilitar los cálculos */
+}
+
+body {
+    font-family: 'Segoe UI', 'Open Sans', sans-serif;
+    background-color: hsla(190, 100%, 50%, 1); /* Color base del degradado de Visitantes */
+    background-image:
+        radial-gradient(circle at 50% 0%, rgb(0, 100, 130) 49.16%, transparent 102.23%), /* Degradado de Visitantes */
+        url('../img/fondoResidente.jpg'); /* Fondo de Visitantes */
+    background-blend-mode: normal;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    color: #343a40;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* --- Contenedor Principal de la App (igual a visitantes.css) --- */
+.app-container {
+    max-width: 43rem;
+    width: 100%;
+    margin: 2rem auto;
+    border: 0.1rem solid #ccc;
+    background: white;
+    min-height: calc(100vh - 4rem);
+    display: flex;
+    flex-direction: column;
+    border-radius: 1.5rem;
+    box-shadow: 0 1rem 3rem rgba(0,0,0,0.2);
+    overflow: hidden;
+}
+
+/* --- Header (igual a visitantes.css, adaptando el h1) --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    background-color: #f7f7f7;
+    border-bottom: 0.1rem solid #eee;
+}
+
+header h1 { /* Estilo para el título "Notificaciones" en el header */
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #343a40;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.back-btn {
+    font-size: 2.2rem;
+    background: none;
+    border: none;
+    transition: background 0.2s ease-in-out, transform 0.2s ease-in-out;
+    border-radius: 50%;
+    width: 4.5rem;
+    height: 4.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #34495e;
+}
+
+.back-btn:hover,
+.back-btn:focus {
+    background: #e0e0e0;
+    outline: none;
+    transform: scale(1.1);
+}
+
+.profile-pic {
+    width: 4.5rem;
+    height: 4.5rem;
+    background: url('../img/man-148582_1280.png') center/cover no-repeat;
+    border-radius: 50%;
+    border: 0.2rem solid #00a6a6;
+    box-shadow: 0 0 0.8rem rgba(0, 166, 166, 0.3);
+}
+
+/* --- Contenido Principal: Lista de Notificaciones --- */
+.main-content {
+    flex: 1; /* Permite que el contenido principal ocupe el espacio restante y sea scrollable */
+    overflow-y: auto;
+    padding: 1.5rem;
+    background-color: #f7f7f7; /* Fondo ligero para la lista */
+}
+
+.notification-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem; /* Espacio entre notificaciones */
+}
+
+.notification-item {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 0.2rem 0.8rem rgba(0,0,0,0.08);
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    border: 0.1rem solid #eee;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.notification-item.unread {
+    background-color: #e6f7ff; /* Fondo azul claro para notificaciones no leídas */
+    border-left: 0.5rem solid #00a6a6; /* Borde de color para no leídas */
+}
+
+.notification-icon {
+    width: 4rem;
+    height: 4rem;
+    background-color: #00a6a6; /* Color del icono de notificaciones */
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    flex-shrink: 0;
+    margin-right: 1.5rem;
+}
+
+.notification-content {
+    flex-grow: 1;
+}
+
+.notification-content h3 {
+    font-size: 1.8rem;
+    color: #008c8c; /* Título de la notificación */
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.notification-content p {
+    font-size: 1.5rem;
+    color: #555;
+    line-height: 1.4;
+}
+
+.notification-timestamp {
+    font-size: 1.2rem;
+    color: #888;
+    margin-top: 0.8rem;
+    text-align: right;
+}
+
+.no-notifications-message {
+    text-align: center;
+    font-size: 1.6rem;
+    color: #666;
+    margin-top: 3rem;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 0.2rem 0.8rem rgba(0,0,0,0.05);
+}
+
+
+/* --- Footer (igual a visitantes.css) --- */
+footer {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    background: #f7f7f7;
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 -0.2rem 0.8rem rgba(0,0,0,0.1);
+}
+
+.tab {
+    border: none;
+    background: none;
+    font-size: 12px;
+    cursor: pointer;
+    color: #555;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    padding: 0.5rem 0;
+    transition: color 0.3s ease;
+}
+
+.tab-icon {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 4px;
+    transition: transform 0.3s, filter 0.3s;
+}
+
+.tab:hover .tab-icon,
+.tab:focus .tab-icon {
+    transform: scale(1.2) rotate(-10deg);
+    filter: brightness(1.2) drop-shadow(0 2px 6px #0073e655);
+}
+
+.tab.active span {
+    color: #0073e6;
+    font-weight: bold;
+}
+
+
+/* --- Media Queries para Responsividad (adaptado) --- */
+@media (max-width: 600px) {
+    body {
+        align-items: flex-start;
+    }
+    .app-container {
+        max-width: 100vw;
+        border: none;
+        border-radius: 0;
+        min-height: 100vh;
+        margin: 0;
+        box-shadow: none;
+    }
+
+    header {
+        padding: 1rem;
+    }
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .main-content {
+        padding: 1rem;
+    }
+    .notification-item {
+        padding: 1.2rem;
+        border-radius: 0.8rem;
+    }
+    .notification-icon {
+        width: 3.5rem;
+        height: 3.5rem;
+        font-size: 1.8rem;
+        margin-right: 1rem;
+    }
+    .notification-content h3 {
+        font-size: 1.6rem;
+    }
+    .notification-content p {
+        font-size: 1.4rem;
+    }
+    .notification-timestamp {
+        font-size: 1.1rem;
+    }
+    .no-notifications-message {
+        font-size: 1.4rem;
+        padding: 1.5rem;
+    }
+
+    footer {
+        padding: 0.8rem;
+    }
+    .tab span {
+        font-size: 11px;
+    }
+    .tab-icon {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+@media (max-width: 380px) {
+    .notification-item {
+        padding: 1rem;
+    }
+    .notification-icon {
+        width: 3rem;
+        height: 3rem;
+        font-size: 1.6rem;
+    }
+    .notification-content h3 {
+        font-size: 1.5rem;
+    }
+    .notification-content p {
+        font-size: 1.3rem;
+    }
+}
